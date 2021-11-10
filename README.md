@@ -10,7 +10,8 @@ This application will display six guitar chords based on the key chosen from the
 ## ERD
 
 
-![image](https://user-images.githubusercontent.com/8105789/141021612-77b21cef-d5ed-404f-bacd-43e336fd79dc.png)
+![Project4-ERD](https://user-images.githubusercontent.com/8105789/141148452-33cd68bd-0823-4e92-841d-b9b0880cf6c6.png)
+
 
 Note: Chords table will use a Boolean value = True if the chord diagram is a bar chord
 
