@@ -11,8 +11,12 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Project4-ERD](https://user-images.githubusercontent.com/8105789/141358506-6d9ab122-c0b6-4947-a9f9-1097cb4a8f48.png)
+
+
+
+
+
 
 ### `npm test`
 
