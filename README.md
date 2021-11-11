@@ -1,74 +1,110 @@
-# Getting Started with Create React App
+# fretboard
+SEI Project 4 - Circle of 5ths Chords and Scales
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project 4 – Progressions and Scales (a.k.a. Jay’s Fretboard)
 
-## Available Scripts
+Description
 
-In the project directory, you can run:
+This application will display six guitar chords based on the key chosen from the Circle of Fifths.  The user will be able to choose open chords or bar chords and the application will display one or more scales that can be used with the chords chosen.  The application will have a record function and allow users to save recordings.
 
-### `npm start`
+## ERD
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-![Project4-ERD](https://user-images.githubusercontent.com/8105789/141358506-6d9ab122-c0b6-4947-a9f9-1097cb4a8f48.png)
-
+![Project4-ERD](https://user-images.githubusercontent.com/8105789/141372697-2b7ef527-d6ae-4c50-98f7-486d3787dd95.png)
 
 
 
 
 
-### `npm test`
+Note: Chords table will use a Boolean value = True if the chord diagram is a bar chord
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Wireframes
 
-### `npm run build`
+Main Page
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![Project4_Wireframe_1](https://user-images.githubusercontent.com/8105789/141023630-021db5fd-a68f-440a-963e-2952e14f70b5.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Admin Page
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![image](https://user-images.githubusercontent.com/8105789/141022241-86656f1e-7593-4eb6-b2b3-4a67d686d14c.png)
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## User Stories
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* I am a guitar player and I want to select a musical key so I can play chord progressions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+* I am a guitar player and I want to record my chord progressions so I can play them back
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+* I am a guitar player and I want to create a user login
 
-## Learn More
+* I am a guitar player and I want to login so I can save my chord progressions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* I am a guitar player and I want to login so I can delete my chord progressions
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* I am a guitar player and I want to see guitar scales so I can play leads with my chord progressions
 
-### Code Splitting
+* I am a site administrator and I want a user admin page so I can reset passwords
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* I am a site administrator and I want an admin page so I can delete users
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+## MVP
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* User login
 
-### Advanced Configuration
+* User-selected Key returns six chord diagrams for the key group.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+* User can select open or bar chords.
 
-### Deployment
+* Displays one or more guitar scales appropriate for the selected key.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+* Allows user to record, playback and save audio.
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Stretch Goals
+
+* Guitar scales are pulled from www.tofret.com API based on selected chords.  Scale diagrams rendered dynamically using canvas.
+
+* Implement Oauth security for user logon.
+
+* Delete related records (i.e. user is deleted and associated recordings are deleted using cascade)
+
+
+## New (untaught) Components
+
+Audio recorder
+
+The canvas HTML/React component
+
+
+## Resources
+
+Chord Diagrams - https://chordpic.com/
+
+Scales Diagrams - https://www.guitarscale.org/all-scales.html
+
+
+## Audio Recording
+
+### react-mp3-audio-recording
+Sample code includes ability to download and adjust playback speed.
+
+https://medium.com/front-end-weekly/recording-audio-in-mp3-using-reactjs-under-5-minutes-5e960defaf10
+
+npm install --save mic-recorder-to-mp3
+
+https://github.com/Matheswaaran/react-mp3-audio-recording/blob/master/src/App.js
+
+
+
+### audio-react-recorder
+First attempt was with audio-react-recorder.  Had some dependency issues.  Code provided didi not fully reproduce the provided demo.
+
+React Recorder - https://www.npmjs.com/package/audio-react-recorder
+	Required:
+		npm install --save prop-types
+		npm install --save audio-react-recorder --legacy-peer-deps
+
+https://github.com/doppelgunner/audio-react-recorder
+
