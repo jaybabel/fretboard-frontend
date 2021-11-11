@@ -10,7 +10,8 @@ This application will display six guitar chords based on the key chosen from the
 ## ERD
 
 
-![Project4-ERD](https://user-images.githubusercontent.com/8105789/141352401-250a1404-2417-4498-9b3f-be40d7820724.png)
+![Project4-ERD](https://user-images.githubusercontent.com/8105789/141358506-6d9ab122-c0b6-4947-a9f9-1097cb4a8f48.png)
+
 
 
 
