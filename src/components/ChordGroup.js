@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 
-const openChords = ["C-Major_open.png", "F-Major_open.png", "G-Major_open.png", "D-Minor_open.png", "A-Minor_open.png", "E-Minor_open.png"]
+const openChords = ["C_open.png", "F_open.png", "G_open.png", "Dm_open.png", "Am_open.png", "Em_open.png"]
 const barChords = ["CMajor_bar.png", "FMajor_bar.png", "GMajor_bar.png", "Dm_bar.png", "Am_bar.png", "Em_bar.png"]
 const chordType = []
 

@@ -10,13 +10,13 @@ import { render } from '@testing-library/react';
 function Canvas(props) {
     render(); {
         return (
-            <div className="scaleSection">c
+            <div className="scaleSection">
                 <h3>C Major Scale</h3>
                 <form className="pageScales">
 
                     <input type="submit" value="<"></input>
                     <div className="displayScale">
-                         <img src="C_scale.png" alt="G chord" className="chordImage"></img>
+                         <img src="C_Major_scale.png" alt="G chord" className="chordImage"></img>
                     </div>
                     <input type="submit" value=">"></input>
                 </form>
