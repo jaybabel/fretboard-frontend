@@ -1,7 +1,7 @@
 import './App.css';
-import Canvas from './components/Canvas';
+// import Canvas from './components/Canvas';
 // import Scales from './components/Scales';
-import ChordGroup from './components/ChordGroup';
+// import ChordGroup from './components/ChordGroup';
 import ChordsSelection from './components/ChordsSelection';
 
 function App() {
@@ -10,9 +10,9 @@ function App() {
       <div className="upper">
         <h1>Fretboard</h1>
         <ChordsSelection />
-        <ChordGroup />
+        {/* <ChordGroup /> */}
       </div>
-      <Canvas />
+      {/* <Canvas /> */}
     </div>
   );
 }

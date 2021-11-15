@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
-import { render } from '@testing-library/react';
+// import React, { Component } from 'react';
+// import ReactDOM from 'react-dom';
+// import { render } from '@testing-library/react';
 
 // const canvas = document.querySelector('canvas');
 // const ctx = canvas.getContext('2d');
 // ctx.fillStyle = 'green';
 // ctx.fillRect(10, 10, 100, 100);
 
-function Canvas(props) {
-    render(); {
+function Canvas() {
+    // render(); {
         return (
             <div className="scaleSection">
                 <h3>C Major Scale</h3>
@@ -26,7 +26,7 @@ function Canvas(props) {
             // </canvas>
         );
     }
-}
+// }
 
 // ReactDOM.render(<App />, document.getElementById('root').getContext('2d'));
 
