@@ -13,9 +13,10 @@
   padding-left: 75px;
 }
 
-#keyDropdown {
-  font-size: 20pt;
+.optSelectKey {
+  height: 40px;
   width: 200px;
+  font-size: large;
 }
 
 #openChords {

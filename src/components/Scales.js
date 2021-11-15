@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+//import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
 // import { render } from '@testing-library/react';
 
@@ -18,7 +18,7 @@ function Scales(props) {
                         return (
                             <li>    
                                 {props.scales[1].scalename}
-                                <img src={props.scales[1].imageurl}></img>
+                                <img src={props.scales[1].imageurl} alt="scale" ></img>
                             </li>
                         )
                      })

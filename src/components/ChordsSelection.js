@@ -3,9 +3,6 @@ import axios from 'axios';
 import Scales from './Scales';
 import ChordGroup from './ChordGroup';
 
-// const openChords = ["C-Major_open.png", "F-Major_open.png", "G-Major_open.png", "D-Minor_open.png", "A-Minor_open.png", "E-Minor_open.png"]
-// const barChords = ["CMajor_bar.png", "FMajor_bar.png", "GMajor_bar.png", "Dm_bar.png", "Am_bar.png", "Em_bar.png"]
-// const chordType = []
 
 class ChordsSelection extends Component {
     constructor() {
@@ -13,6 +10,7 @@ class ChordsSelection extends Component {
 
         this.state = {
             keylist: [],
+            chords: [],
             scales: []
         }
     }
@@ -61,10 +59,10 @@ class ChordsSelection extends Component {
             <div className="circleOf5ths">
                     <img src="Circle_of_5ths.png" alt="Circle of 5ths"></img>
                 <div className="selections">
-                    <h3>Select Key</h3>
+                    <h3>Keys and Chord Types</h3>
                     <form onSubmit={this.submitKey}>
-                        <select value={this.state.value} onChange={this.handleKeyChange}>
-                            <option selected value="">Select Key</option>
+                        <select className="optSelectKey" value={this.state.value} onChange={this.handleKeyChange}>
+                            <option  selected value="">Select Key</option>
                             {this.state.keylist.map((mkey, index) => {
                                 return (
                                     <option key={mkey.id} 
@@ -85,8 +83,8 @@ class ChordsSelection extends Component {
                     </form>
                     <br></br><br></br>
                 </div>
-                <ChordGroup />
             </div>
+            {/* <ChordGroup chords={this.state.chords}/> */}
             <div>
                 <Scales scales={this.state.scales}/>
             </div>

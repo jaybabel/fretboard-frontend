@@ -1,46 +1,48 @@
 // import { render } from '@testing-library/react';
 // import React, { Component } from 'react';
 
-const openChords = ["C_open.png", "F_open.png", "G_open.png", "Dm_open.png", "Am_open.png", "Em_open.png"]
-// const barChords = ["CMajor_bar.png", "FMajor_bar.png", "GMajor_bar.png", "Dm_bar.png", "Am_bar.png", "Em_bar.png"]
-// const chordType = []
 
 function ChordGroup(props) {
+    console.log('chord group chords: ', props)
     // render(); {
-        return (
 
+        return (
+       
                 <div className="chordGroup">
+        {/* {props.chords.map((chordkey, index) => {                      */}
                     <form className="chordBox">
-                        <img src={openChords[0]} alt="C chord" className="chordImage"></img>
+                        <img src={props.chords[0].imageurl} alt="I chord" className="chordImage"></img>
                         <input type="checkbox" id="I_chord" className="chordCheckbox" name="I_chord"></input>
                         <label for="I_chord">I</label>
                     </form>
                     <form className="chordBox">
-                        <img src={openChords[1]} alt="F chord" className="chordImage"></img>
+                        <img src={props.chords[1].imageurl} alt="IV chord" className="chordImage"></img>
                         <input type="checkbox" id="IV_chord" className="chordCheckbox" name="IV_chord"></input>
                         <label for="IV_chord">IV</label>
                     </form>
                     <form className="chordBox">
-                        <img src={openChords[2]} alt="G chord" className="chordImage"></img>
+                        <img src={props.chords[2].imageurl} alt="V chord" className="chordImage"></img>
                         <input type="checkbox" id="V_chord" className="chordCheckbox" name="V_chord"></input>
                         <label for="V_chord">V</label>
                     </form>
                     <form className="chordBox">
-                        <img src={openChords[3]} alt="Dm chord" className="chordImage"></img>
+                        <img src={props.chords[3].imageurl} alt="ii chord" className="chordImage"></img>
                         <input type="checkbox" id="ii_chord" className="chordCheckbox" name="ii_chord"></input>
                         <label for="ii_chord">ii</label>
                     </form>
                     <form className="chordBox">
-                        <img src={openChords[4]} alt="Am chord" className="chordImage"></img>
+                        <img src={props.chords[4].imageurl} alt="vi chord" className="chordImage"></img>
                         <input type="checkbox" id="vi_chord" className="chordCheckbox" name="vi_chord"></input>
                         <label for="vi_chord">vi</label>
                     </form>
                     <form className="chordBox">
-                        <img src={openChords[5]} alt="Em chord" className="chordImage"></img>
+                        <img src={props.chords[5].imageurl} alt="iii chord" className="chordImage"></img>
                         <input type="checkbox" id="iii_chord" className="chordCheckbox" name="iii_chord"></input>
                         <label for="iii_chord">iii</label>
                     </form>
+        {/* })}                     */}
                 </div>
+
         );
     }
 // }
