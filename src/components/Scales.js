@@ -1,38 +1,35 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+//import ReactDOM from 'react-dom';
+// import { render } from '@testing-library/react';
 
-class Scales extends Component {
-    constructor() {
-        super();
 
-        this.state = {
-            scales: [],
-            musicalKey: 'C',
-            chordGroup: ['C', 'Dm', 'Em', 'F', 'G', 'Am'],
-            musicalNotes: ''
-        }
-    }
-
-    componentDidMount() {
-        axios
-            .get(`http://www.tofret.com/reverse-chord-finder.php?return-type=json&notes=${this.state.musicalKey}`, { 
-
-        })
-        .then((response) => {
-            this.setState({scales: response.scales})
-        })
-    }
-
-    updateScales() {
-        axios
-        .get(`http://www.tofret.com/reverse-chord-finder.php?return-type=json&notes=${this.state.musicalNotes}`, { 
-
-        })
-        .then((response) => {
-            this.setState({scales: response.scales})
-        })
-    }
+function Scales(props) {
+    console.log('scales.js ', props)
+    // render(); {
+    return (
+        <div className="scaleSection">
+            <h3>Scale</h3>
+            <br></br><br></br>
+            <div className="displayScale">
+                <form className="pageScales">
+                    {/* <input type="submit" value="<"></input> */}
+                    <option selected value="">scale</option>
+                    {props.scales.map((scalekey, index) => {
+                        return (
+                            <li key={scalekey.id}
+                                value={scalekey.scalename}>
+                                {scalekey.scalename}
+                                <img src={scalekey.imageurl}></img>
+                            </li>
+                        )
+                    }
+                    )}
+                    <input type="submit" value=">"></input>
+                </form>
+            </div>
+        </div>
+    );
 }
-
+// }
 
 export default Scales;

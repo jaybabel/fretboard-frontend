@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import Scales from './Scales';
 
 // const openChords = ["C-Major_open.png", "F-Major_open.png", "G-Major_open.png", "D-Minor_open.png", "A-Minor_open.png", "E-Minor_open.png"]
 // const barChords = ["CMajor_bar.png", "FMajor_bar.png", "GMajor_bar.png", "Dm_bar.png", "Am_bar.png", "Em_bar.png"]
@@ -71,20 +71,20 @@ class ChordsSelection extends Component {
                                 )}
                             )}
                         </select>
+                        <br></br><br></br>
+                        <input type="radio" id="openChords" name="barchord" value="false"></input>
+                        <label for="openChords" className="chordRadio">Open Chords</label>
+                        <br></br><br></br>
+                        <input type="radio" id="barChords" name="barchord" value="true"></input>
+                        <label for="barChords" className="chordRadio">Bar Chords</label><br></br>
+                        <br></br><br></br>
                         <input class="btnChooseKey" type="submit" value="Submit" />
                     </form>
                     <br></br><br></br>
-
-                    <form target="result" method="get">
-                        <input type="radio" id="openChords" name="chord_type" value="openChords"></input>
-                        <label for="openChords" className="chordRadio">Open Chords</label>
-                        <br></br><br></br>
-                        <input type="radio" id="barChords" name="chord_type" value="barChords"></input>
-                        <label for="barChords" className="chordRadio">Bar Chords</label><br></br>
-                        <br></br><br></br>
-                        <input type="submit" value="Chord Type"></input>
-                    </form>
                 </div>
+            </div>
+            <div>
+                <Scales scales={this.state.scales}/>
             </div>
         </div>
         );

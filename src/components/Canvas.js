@@ -1,5 +1,5 @@
-// import React, { Component } from 'react';
-// import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
+//import ReactDOM from 'react-dom';
 // import { render } from '@testing-library/react';
 
 // const canvas = document.querySelector('canvas');
@@ -7,17 +7,23 @@
 // ctx.fillStyle = 'green';
 // ctx.fillRect(10, 10, 100, 100);
 
-function Canvas() {
+
+
+function Canvas(props) {
+    console.log('canvas ', props)
     // render(); {
         return (
             <div className="scaleSection">
                 <h3>C Major Scale</h3>
                 <form className="pageScales">
-
-                    <input type="submit" value="<"></input>
-                    <div className="displayScale">
-                         <img src="C_Major_scale.png" alt="G chord" className="chordImage"></img>
-                    </div>
+                    {/* <input type="submit" value="<"></input> */}
+                    {/* <div className="displayScale"> */}
+                         {this.state.scale.map((scalekey, index) => {
+                             return (
+                                 <p>{scalekey.scalename}</p>
+                             )}
+                         )}
+                    {/* </div> */}
                     <input type="submit" value=">"></input>
                 </form>
             </div>
