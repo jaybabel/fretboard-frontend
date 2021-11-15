@@ -12,19 +12,18 @@ function Scales(props) {
             <br></br><br></br>
             <div className="displayScale">
                 <form className="pageScales">
-                    {/* <input type="submit" value="<"></input> */}
-                    <option selected value="">scale</option>
+                    <input type="submit" className="btnScale" value="<"></input>
+                    <option selected value=""></option>
                     {props.scales.map((scalekey, index) => {
                         return (
-                            <li key={scalekey.id}
-                                value={scalekey.scalename}>
-                                {scalekey.scalename}
-                                <img src={scalekey.imageurl}></img>
+                            <li>    
+                                {props.scales[1].scalename}
+                                <img src={props.scales[1].imageurl}></img>
                             </li>
                         )
+                     })
                     }
-                    )}
-                    <input type="submit" value=">"></input>
+                    <input type="submit" className="btnScale"  value=">"></input>
                 </form>
             </div>
         </div>
