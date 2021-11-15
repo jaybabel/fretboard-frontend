@@ -12,10 +12,11 @@ class ChordsSelection extends Component {
 
         this.state = {
             keylist: [],
+            scales: []
         }
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         axios
             .get('http://localhost:3005/musicalkeys')
     
@@ -26,9 +27,29 @@ class ChordsSelection extends Component {
         })
     }
 
+    handleKeyChange = async (e) => {
+        await this.setState({
+            value: e.target.value
+        });      
+    }
+
+    submitKey = async (e) => {
+        e.preventDefault();
+        axios
+            .get(`http://localhost:3005/scales/${this.state.value}`, {})
+
+            .then((response) => {
+                this.setState({ 
+                    scales: response.data 
+                })
+            })            
+        }
+
+
     render() {
 
         console.log('keylist ', this.state.keylist)
+        console.log('scales ', this.state.scales)
         
         return (
         <div className="selectKey">
@@ -36,10 +57,22 @@ class ChordsSelection extends Component {
                     <img src="Circle_of_5ths.png" alt="Circle of 5ths"></img>
                 <div className="selections">
                     <h3>Select Key</h3>
-                    <select name="musicalKey" id="keyDropdown">
-                        <option value="C">C</option>
-                        <option value="G">G</option>
-                    </select>
+                    {/* <select name="musicalKey" id="keyDropdown"></select> */}
+
+                    <form onSubmit={this.submitKey}>
+                        <select value={this.state.value} onChange={this.handleKeyChange}>
+                            <option selected value="">Select Key</option>
+                            {this.state.keylist.map((mkey, index) => {
+                                return (
+                                    <option key={mkey.id} 
+                                    value={mkey.keyname}>
+                                    {mkey.keyname}
+                                    </option>
+                                )}
+                            )}
+                        </select>
+                        <input class="btnChooseKey" type="submit" value="Submit" />
+                    </form>
                     <br></br><br></br>
 
                     <form target="result" method="get">
