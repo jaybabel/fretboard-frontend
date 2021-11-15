@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Scales from './Scales';
+import ChordGroup from './ChordGroup';
 
 // const openChords = ["C-Major_open.png", "F-Major_open.png", "G-Major_open.png", "D-Minor_open.png", "A-Minor_open.png", "E-Minor_open.png"]
 // const barChords = ["CMajor_bar.png", "FMajor_bar.png", "GMajor_bar.png", "Dm_bar.png", "Am_bar.png", "Em_bar.png"]
@@ -35,20 +36,24 @@ class ChordsSelection extends Component {
 
     submitKey = async (e) => {
         e.preventDefault();
-        axios
-            .get(`http://localhost:3005/scales/${this.state.value}`, {})
+        const [chordsResponse, scalesResponse] = await Promise.all([
+            axios.get(`http://localhost:3005/chords/${this.state.value}/false`),
+            axios.get(`http://localhost:3005/scales/${this.state.value}`)
+    
+        ]);
 
-            .then((response) => {
-                this.setState({ 
-                    scales: response.data 
-                })
-            })            
+            this.setState({ 
+                chords: chordsResponse.data,
+                scales: scalesResponse.data
+            })
+                        
         }
 
 
     render() {
 
         console.log('keylist ', this.state.keylist)
+        console.log('chords ', this.state.chords)
         console.log('scales ', this.state.scales)
         
         return (
@@ -57,8 +62,6 @@ class ChordsSelection extends Component {
                     <img src="Circle_of_5ths.png" alt="Circle of 5ths"></img>
                 <div className="selections">
                     <h3>Select Key</h3>
-                    {/* <select name="musicalKey" id="keyDropdown"></select> */}
-
                     <form onSubmit={this.submitKey}>
                         <select value={this.state.value} onChange={this.handleKeyChange}>
                             <option selected value="">Select Key</option>
@@ -82,6 +85,7 @@ class ChordsSelection extends Component {
                     </form>
                     <br></br><br></br>
                 </div>
+                <ChordGroup />
             </div>
             <div>
                 <Scales scales={this.state.scales}/>
