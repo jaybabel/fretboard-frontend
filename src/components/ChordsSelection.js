@@ -35,7 +35,7 @@ class ChordsSelection extends Component {
     submitKey = async (e) => {
         e.preventDefault();
         const [chordsResponse, scalesResponse] = await Promise.all([
-            axios.get(`http://localhost:3005/chords/${this.state.value}/false`),
+            axios.get(`http://localhost:3005/chords/${this.state.value}/true`),
             axios.get(`http://localhost:3005/scales/${this.state.value}`)
 
         ]);
@@ -44,7 +44,6 @@ class ChordsSelection extends Component {
             chords: chordsResponse.data,
             scales: scalesResponse.data
         })
-
     }
 
 
@@ -53,11 +52,14 @@ class ChordsSelection extends Component {
         console.log('keylist ', this.state.keylist)
         console.log('chords ', this.state.chords)
         console.log('scales ', this.state.scales)
+        // console.log('value ', this.state.value)
+        // console.log('ibarcode ', this.state.barchord)
 
         return (
             <div className="selectKey">
                 <div className="circleOf5ths">
-                    <img src="Circle_of_5ths.png" alt="Circle of 5ths"></img>
+                    {/* <img src="Circle_of_5ths.png" alt="Circle of 5ths"></img> */}
+                    <img src="circleof5.png" alt="Circle of 5ths"></img>
                     <div className="selections">
                         <h3>Keys and Chord Types</h3>
                         <form onSubmit={this.submitKey}>
@@ -65,8 +67,7 @@ class ChordsSelection extends Component {
                                 <option selected value="">Select Key</option>
                                 {this.state.keylist.map((mkey, index) => {
                                     return (
-                                        <option key={mkey.id}
-                                            value={mkey.keyname}>
+                                        <option key={mkey.id} value={mkey.keyname}>
                                             {mkey.keyname}
                                         </option>
                                     )
@@ -81,10 +82,12 @@ class ChordsSelection extends Component {
                             <label for="barChords" className="chordRadio">Bar Chords</label><br></br>
                             <br></br><br></br>
                             <input class="btnChooseKey" type="submit" value="Submit" />
+
+                            
                         </form>
                         <br></br><br></br>
                     </div>
-                <ChordGroup chords={this.state.chords} />                    
+                    <ChordGroup chords={this.state.chords} />
                 </div>
                 <div className="divScales">
                     <Scales scales={this.state.scales} />
