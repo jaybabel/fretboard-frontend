@@ -8,8 +8,6 @@ function Scales(props) {
     // render(); {
     return (
         <div className="scaleSection">
-            <h3>Scale</h3>
-            <br></br><br></br>
             <div className="displayScale">
                 <form className="pageScales">
                     <input type="submit" className="btnScale" value="<"></input>

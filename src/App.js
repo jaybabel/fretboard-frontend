@@ -7,8 +7,9 @@ import ChordsSelection from './components/ChordsSelection';
 function App() {
   return (
     <div className="App">
+              <h1>Fretboard</h1>
       <div className="upper">
-        <h1>Fretboard</h1>
+
         <ChordsSelection />
         {/* <ChordGroup /> */}
       </div>
