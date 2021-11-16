@@ -1,10 +1,12 @@
 //import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
 // import { render } from '@testing-library/react';
-const scaleId = 2
+const scaleId = 1
 
 function Scales(props) {
     console.log('scales.js ', props)
+    const scalesList = props.scales.map((scale) => scale);
+    console.log('scale list: ', scalesList) 
     // render(); {
     return (
         <div className="scaleSection">
@@ -19,8 +21,8 @@ function Scales(props) {
                                 <img src={props.scales[scaleId].imageurl} alt="scale" ></img>
                             </li>
                         )
-                     })
-                    }
+                      })
+                    } 
                     <input type="submit" className="btnScale"  value=">"></input>
                 </form>
             </div>

@@ -3,6 +3,13 @@ import axios from 'axios';
 import Scales from './Scales';
 import ChordGroup from './ChordGroup';
 
+// add code to switch between local and Heroku
+let BASE_URL = ''
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
+    BASE_URL = 'http://localhost:3005'
+} else {
+    BASE_URL = 'https://jays-fretboard.herokuapp.com'
+}
 
 class ChordsSelection extends Component {
     constructor() {
@@ -17,7 +24,7 @@ class ChordsSelection extends Component {
 
     componentDidMount = () => {
         axios
-            .get('http://localhost:3005/musicalkeys')
+            .get(`${BASE_URL}/musicalkeys`)
 
             .then((response) => {
                 this.setState({
@@ -35,8 +42,8 @@ class ChordsSelection extends Component {
     submitKey = async (e) => {
         e.preventDefault();
         const [chordsResponse, scalesResponse] = await Promise.all([
-            axios.get(`http://localhost:3005/chords/${this.state.value}/true`),
-            axios.get(`http://localhost:3005/scales/${this.state.value}`)
+            axios.get(`${BASE_URL}/chords/${this.state.value}/true`),
+            axios.get(`${BASE_URL}/scales/${this.state.value}`)
 
         ]);
 

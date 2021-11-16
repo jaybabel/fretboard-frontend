@@ -10,7 +10,7 @@ function ChordGroup(props) {
         <div className="chordGroup">
             {props.chords.map((chordkey, index) => {
                 return (
-                    <li>
+                    <li key={index}>
                         <img src={props.chords[index].imageurl} alt="I chord" className="chordImage"></img>
                     </li>
                 )
