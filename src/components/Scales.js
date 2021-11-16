@@ -1,7 +1,7 @@
 //import React, { Component } from 'react';
 //import ReactDOM from 'react-dom';
 // import { render } from '@testing-library/react';
-
+const scaleId = 2
 
 function Scales(props) {
     console.log('scales.js ', props)
@@ -14,9 +14,9 @@ function Scales(props) {
                     <option selected value=""></option>
                     {props.scales.map((scalekey, index) => {
                         return (
-                            <li>    
-                                {props.scales[1].scalename}
-                                <img src={props.scales[1].imageurl} alt="scale" ></img>
+                            <li key={index}>    
+                                {props.scales[scaleId].scalename}
+                                <img src={props.scales[scaleId].imageurl} alt="scale" ></img>
                             </li>
                         )
                      })
