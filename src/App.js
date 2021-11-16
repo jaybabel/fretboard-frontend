@@ -7,7 +7,7 @@ import ChordsSelection from './components/ChordsSelection';
 function App() {
   return (
     <div className="App">
-              <h1>Fretboard</h1>
+              <h1>Jay's Fretboard</h1>
       <div className="upper">
 
         <ChordsSelection />
