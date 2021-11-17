@@ -34,13 +34,30 @@ class ChordsSelection extends Component {
     }
 
     handleKeyChange = async (e) => {
+        const target = e.target;
+        const isBarChord = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        
+{/* 
+app.post('/fruits', (req, res)=>{
+    if(e.target.isBarChord === 'on'){ //if checked, req.body.isBarChord is set to 'on'
+        e.target.isBarChord = true; //do some data correction
+    } else { //if not checked, req.body.isBarChord is undefined
+        e.target.isBarChord = false; //do some data correction
+    }
+*/}
+
         await this.setState({
-            value: e.target.value
+            value: e.target.value,
+            isBarChord: isBarChord
         });
     }
 
     submitKey = async (e) => {
         e.preventDefault();
+        console.log(e)
+        console.log('looking for isBarChord: ', this.state.isBarChord)
+        console.log('submitted value: ', this.state.value)
         const [chordsResponse, scalesResponse] = await Promise.all([
             axios.get(`${BASE_URL}/chords/${this.state.value}/true`),
             axios.get(`${BASE_URL}/scales/${this.state.value}`)
@@ -53,7 +70,6 @@ class ChordsSelection extends Component {
         })
     }
 
-
     render() {
 
         console.log('keylist ', this.state.keylist)
@@ -65,7 +81,6 @@ class ChordsSelection extends Component {
         return (
             <div className="selectKey">
                 <div className="circleOf5ths">
-                    {/* <img src="Circle_of_5ths.png" alt="Circle of 5ths"></img> */}
                     <img src="circleof5.png" alt="Circle of 5ths"></img>
                     <div className="selections">
                         <h3>Keys and Chord Types</h3>
@@ -81,16 +96,15 @@ class ChordsSelection extends Component {
                                 }
                                 )}
                             </select>
+                            <br></br><br></br><br></br>
+                            <input 
+                                type="checkbox" 
+                                className="chkIsBarChord" 
+                                name="isBarChord" 
+                                 />
+                                <label className="chkBxLbl">Bar Chords</label><br></br>
                             <br></br><br></br>
-                            <input type="radio" id="openChords" name="barchord" value="false"></input>
-                            <label for="openChords" className="chordRadio">Open Chords</label>
-                            <br></br><br></br>
-                            <input type="radio" id="barChords" name="barchord" value="true"></input>
-                            <label for="barChords" className="chordRadio">Bar Chords</label><br></br>
-                            <br></br><br></br>
-                            <input class="btnChooseKey" type="submit" value="Submit" />
-
-                            
+                            <input className="btnChooseKey" type="submit" value="Submit" />                           
                         </form>
                         <br></br><br></br>
                     </div>

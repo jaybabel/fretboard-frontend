@@ -27,19 +27,15 @@ h1 {
   font-size: large;
 }
 
-#openChords {
-  height: 20px;
-  width: 20px;
-}
-
-#barChords {
-  height: 20px;
-  width: 20px;
-}
-
-.chordRadio {
+.chkBxLbl {
+  font-size:large;
   padding-left: 5px;
   font-size: 20pt;
+}
+
+.chkIsBarChord {
+  height: 25px;
+  width: 25px;
 }
 
 .btnChooseKey {
