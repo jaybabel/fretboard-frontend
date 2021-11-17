@@ -1,10 +1,4 @@
 import React, { useState } from 'react';
-// import PropTypes from 'prop-types';
-
-//import ReactDOM from 'react-dom';
-// import { render } from '@testing-library/react';
-
-
 
 
 function Scales(props) {
@@ -14,10 +8,7 @@ function Scales(props) {
     console.log('scalesLength = ', scalesLength)
 
     const initialCount = 0
-    // export default function Counter({ initialCount }) {
     let [count, setCount] = useState(0)
-    // }
-    //let count = ''
 
     function incrementCount() {
         { (setCount(count) == scalesLength - 1) ? setCount(count = 0) : setCount(count + 1) }
@@ -25,7 +16,7 @@ function Scales(props) {
     }
 
     function decrementCount() {
-        setCount(count - 1)
+        { (setCount(count) == -1) ? setCount(count = scalesLength) : setCount(count - 1) }
         // {this.state.count < 0 ? count = 0 : null }
         console.log(count)
     }
@@ -53,11 +44,5 @@ function Scales(props) {
         </div>
     );
 }
-// }
-
-// ensures counter value is a number
-// Counter.propTypes = {
-//     initialValue: PropTypes.number
-// }
 
 export default Scales;
