@@ -72,6 +72,17 @@ h1 {
   padding-left: 5px;
 }
 
+.btnCounter {
+  height: 40px;
+  width: 40px;
+}
+
+.btnDiv {
+  border: 1px solid black;
+  display: inline-block;
+  padding-top: 150px;
+}
+
 .pageScales {
   display: flex;  
   justify-content: center;
@@ -81,12 +92,8 @@ h1 {
 .displayScale {
   display: inline-flex;
   margin: 5px;
-  width: 100px;
 }
 
-.oneScale {
-  width: 500px;
-}
 
 .btnScale {
   width: 50px;

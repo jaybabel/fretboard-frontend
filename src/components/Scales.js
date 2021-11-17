@@ -15,7 +15,7 @@ function Scales(props) {
 
     const initialCount = 0
     // export default function Counter({ initialCount }) {
-    let [count, setCount] = useState(initialCount)
+    let [count, setCount] = useState(0)
     // }
     //let count = ''
 
@@ -33,19 +33,27 @@ function Scales(props) {
     return (
         <div className="scaleSection">
             <div className="displayScale">
-                <button onClick={incrementCount}>^</button><br></br>
-                <button onClick={decrementCount}>v</button>
-                {props.scales.map((scalekey, index) => {
-                    return (
+                <div className="btnDiv">
+                    <button className="btnCounter" onClick={incrementCount}>^</button><br></br>
+                    <button className="btnCounter" onClick={decrementCount}>v</button>
+                </div>
+                {/* {props.scales.map((scalekey, index) => {
+                    return ( */}
                         <div className="oneScale">
-                            <li key={index}>
-                                <h4>{props.scales[index].scalename}</h4>
-                                <img src={props.scales[index].imageurl} alt="scaleList"></img>
+                        {
+                            props.scales[count] ?
+                            <li>
+                                <h4>{props.scales[count].scalename}</h4>
+                                <img src={props.scales[count].imageurl} alt="scaleList"></img>
                             </li>
+                            :
+                            <div></div>                                
+                        }
+
                         </div>
-                    )
+                    {/* )
                 })
-                }
+                } */}
             </div>
         </div>
     );
