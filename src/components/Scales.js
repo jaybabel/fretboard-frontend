@@ -4,21 +4,16 @@ import React, { useState } from 'react';
 function Scales(props) {
     let scalesLength = '';
     scalesLength = props.scales.length
+    let [count, setCount] = useState(0)
 
     console.log('scalesLength = ', scalesLength)
 
-    const initialCount = 0
-    let [count, setCount] = useState(0)
-
     function incrementCount() {
-        { (setCount(count) == scalesLength - 1) ? setCount(count = 0) : setCount(count + 1) }
-        console.log(count)
+        (count === scalesLength - 1) ? setCount(count = 0) : setCount(count + 1)
     }
 
     function decrementCount() {
-        { (setCount(count) == -1) ? setCount(count = scalesLength) : setCount(count - 1) }
-        // {this.state.count < 0 ? count = 0 : null }
-        console.log(count)
+        (count === 0) ? setCount(count = scalesLength-1) : setCount(count - 1)
     }
 
     return (
@@ -38,7 +33,6 @@ function Scales(props) {
                             :
                             <div></div>                                
                         }
-
                         </div>
             </div>
         </div>

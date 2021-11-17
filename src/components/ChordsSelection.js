@@ -34,34 +34,25 @@ class ChordsSelection extends Component {
     }
 
     handleKeyChange = async (e) => {
-        const target = e.target;
-        const isBarChord = target.type === 'checkbox' ? target.checked : target.value;
-        const name = target.name;
-        
-{/* 
-app.post('/fruits', (req, res)=>{
-    if(e.target.isBarChord === 'on'){ //if checked, req.body.isBarChord is set to 'on'
-        e.target.isBarChord = true; //do some data correction
-    } else { //if not checked, req.body.isBarChord is undefined
-        e.target.isBarChord = false; //do some data correction
-    }
-*/}
 
         await this.setState({
-            value: e.target.value,
-            isBarChord: isBarChord
+            value: e.target.value
+            
         });
     }
 
     submitKey = async (e) => {
         e.preventDefault();
-        console.log(e)
-        console.log('looking for isBarChord: ', this.state.isBarChord)
-        console.log('submitted value: ', this.state.value)
-        const [chordsResponse, scalesResponse] = await Promise.all([
-            axios.get(`${BASE_URL}/chords/${this.state.value}/true`),
-            axios.get(`${BASE_URL}/scales/${this.state.value}`)
 
+        //===================================================================================================
+        console.log(e.target[1].checked)
+        console.log('looking for isBarChord: ', this.state.type)
+        console.log('submitted value: ', this.state.value)
+        //===================================================================================================
+
+        const [chordsResponse, scalesResponse] = await Promise.all([
+            axios.get(`${BASE_URL}/chords/${this.state.value}/${e.target[1].checked}`),
+            axios.get(`${BASE_URL}/scales/${this.state.value}`)
         ]);
 
         this.setState({
@@ -72,11 +63,10 @@ app.post('/fruits', (req, res)=>{
 
     render() {
 
+        //===================================================================================================
         console.log('keylist ', this.state.keylist)
         console.log('chords ', this.state.chords)
         console.log('scales ', this.state.scales)
-        // console.log('value ', this.state.value)
-        // console.log('ibarcode ', this.state.barchord)
 
         return (
             <div className="selectKey">
@@ -97,14 +87,14 @@ app.post('/fruits', (req, res)=>{
                                 )}
                             </select>
                             <br></br><br></br><br></br>
-                            <input 
-                                type="checkbox" 
-                                className="chkIsBarChord" 
-                                name="isBarChord" 
-                                 />
-                                <label className="chkBxLbl">Bar Chords</label><br></br>
+                            <input
+                                type="checkbox"
+                                className="chkIsBarChord"
+                                name="isBarChord"
+                            />
+                            <label className="chkBxLbl">Bar Chords</label><br></br>
                             <br></br><br></br>
-                            <input className="btnChooseKey" type="submit" value="Submit" />                           
+                            <input className="btnChooseKey" type="submit" value="Submit" />
                         </form>
                         <br></br><br></br>
                     </div>
