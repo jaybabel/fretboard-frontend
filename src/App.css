@@ -81,6 +81,11 @@ h1 {
 .displayScale {
   display: inline-flex;
   margin: 5px;
+  width: 100px;
+}
+
+.oneScale {
+  width: 500px;
 }
 
 .btnScale {

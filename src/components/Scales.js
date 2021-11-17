@@ -15,13 +15,12 @@ function Scales(props) {
 
     const initialCount = 0
     // export default function Counter({ initialCount }) {
-    let [count, setCount] = useState(initialCount)      
+    let [count, setCount] = useState(initialCount)
     // }
     //let count = ''
 
     function incrementCount() {
-        setCount(count + 1)
-        {count = (scalesLength - 1) ? count = 0 : null }
+        { (setCount(count) == scalesLength - 1) ? setCount(count = 0) : setCount(count + 1) }
         console.log(count)
     }
 
@@ -33,23 +32,20 @@ function Scales(props) {
 
     return (
         <div className="scaleSection">
-                <div className="displayScale">
+            <div className="displayScale">
                 <button onClick={incrementCount}>^</button><br></br>
-                <button onClick={decrementCount}>v</button>                
-                <form className="pageScales">
-                    {/* <input type="submit" className="btnScale" value="^"></input> */}
-                    <option selected value=""></option>
-                    {props.scales.map((scalekey, index) => { 
-                        return (
-                            <li key={index}> 
-                                <h4>{props.scales[count].scalename}</h4>
-                                <img src={props.scales[count].imageurl} alt="scaleList"></img>
+                <button onClick={decrementCount}>v</button>
+                {props.scales.map((scalekey, index) => {
+                    return (
+                        <div className="oneScale">
+                            <li key={index}>
+                                <h4>{props.scales[index].scalename}</h4>
+                                <img src={props.scales[index].imageurl} alt="scaleList"></img>
                             </li>
-                         )
-                       })
-                    } 
-                    {/* <input type="submit" className="btnScale"  value=">"></input> */}
-                </form>
+                        </div>
+                    )
+                })
+                }
             </div>
         </div>
     );
