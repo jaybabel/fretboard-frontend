@@ -37,8 +37,6 @@ function Scales(props) {
                     <button className="btnCounter" onClick={incrementCount}>^</button><br></br>
                     <button className="btnCounter" onClick={decrementCount}>v</button>
                 </div>
-                {/* {props.scales.map((scalekey, index) => {
-                    return ( */}
                         <div className="oneScale">
                         {
                             props.scales[count] ?
@@ -51,9 +49,6 @@ function Scales(props) {
                         }
 
                         </div>
-                    {/* )
-                })
-                } */}
             </div>
         </div>
     );
