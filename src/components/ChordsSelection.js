@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Scales from './Scales';
 import ChordGroup from './ChordGroup';
+import Recorder from './Recorder'
 
 // add code to switch between local and Heroku
 let BASE_URL = ''
@@ -91,7 +92,11 @@ class ChordsSelection extends Component {
                 </div>
                 <div className="divScales">
                     <Scales scales={this.state.scales} />
+                    <div className="divRecorder">
+                        <Recorder />                           
+                    </div>
                 </div>
+            
             </div>
         );
     }
