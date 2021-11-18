@@ -2,6 +2,17 @@
   background-color: antiquewhite;
 }
 
+.headerDiv h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.headerDiv h3 {
+  color: blue;
+  padding-left: 10px;
+}
+
 h1 {
   text-align: center;
 }
@@ -100,6 +111,7 @@ h1 {
   border: 2px solid black;
   display: inline-flex;
   width: 1524px;
+  min-width: 1000px;
 }
 
 .MP3_div {
@@ -111,6 +123,7 @@ h1 {
   padding-left: 40px;
   padding-top: 10px;
 }
+
 .divRecorder {
   display: flex;  
   justify-content: center;
