@@ -44,12 +44,6 @@ class ChordsSelection extends Component {
     submitKey = async (e) => {
         e.preventDefault();
 
-        //===================================================================================================
-        console.log(e.target[1].checked)
-        console.log('looking for isBarChord: ', this.state.type)
-        console.log('submitted value: ', this.state.value)
-        //===================================================================================================
-
         const [chordsResponse, scalesResponse] = await Promise.all([
             axios.get(`${BASE_URL}/chords/${this.state.value}/${e.target[1].checked}`),
             axios.get(`${BASE_URL}/scales/${this.state.value}`)
@@ -62,11 +56,6 @@ class ChordsSelection extends Component {
     }
 
     render() {
-
-        //===================================================================================================
-        console.log('keylist ', this.state.keylist)
-        console.log('chords ', this.state.chords)
-        console.log('scales ', this.state.scales)
 
         return (
             <div className="selectKey">
