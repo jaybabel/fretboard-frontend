@@ -75,11 +75,14 @@ h1 {
 .btnCounter {
   height: 40px;
   width: 40px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .btnDiv {
   display: inline-block;
-  padding-top: 150px;
+  padding-top: 130px;
+  width: 50px;
 }
 
 .pageScales {
@@ -92,7 +95,6 @@ h1 {
   display: inline-flex;
   margin: 5px;
 }
-
 
 .btnScale {
   width: 50px;
