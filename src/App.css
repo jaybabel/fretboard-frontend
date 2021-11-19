@@ -2,17 +2,6 @@
   background-color: antiquewhite;
 }
 
-.headerDiv h1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.headerDiv h3 {
-  color: blue;
-  padding-left: 10px;
-}
-
 h1 {
   text-align: center;
 }
@@ -147,4 +136,32 @@ h1 {
 
 li {
   list-style-type: none;
+}
+
+.divLogin {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+}
+
+.divLogin input {
+  height: 30px;
+  width: 200px;
+  font-size: larger;
+}
+
+.divSignup {
+  display: flex;
+  justify-content: center;
+  height: 500px;
+}
+
+.divSignup input {
+  height: 30px;
+  width: 200px;
+  font-size: larger;
+}
+
+.divSignup h3 {
+  text-align: center;
 }
