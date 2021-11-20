@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-function Login(props) {
+function DeleteUser(props) {
   console.log("login page", props);
   return (
     <div>
-      <h1>User Login Page</h1>
+      <h1>Delete User Page</h1>
       <div className="divLogin">
         <form onSubmit={props.handleLogin}>
           <h3>Username</h3>
@@ -16,23 +16,21 @@ function Login(props) {
           />
           <br></br>
           <br></br>
-          <h3>Password</h3>
           <input
-            onChange={props.handleChange}
-            type="password"
+            type="text"
             name="password"
+            value={props.password} 
             placeholder="password"
+            onChange={props.handleChange}
           />
           <br></br>
           <br></br>
           <br></br>
-          <input type="submit" value="Login" />
+          <input type="submit" value="Delete User" />
         </form>
       </div>
-
-
     </div>
   );
 }
 
-export default Login;
+export default DeleteUser;

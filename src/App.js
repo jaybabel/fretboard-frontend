@@ -4,6 +4,8 @@ import { Route, Link } from "react-router-dom";
 import ChordsSelection from "./components/ChordsSelection";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import ChangePassword from "./components/ChangePassword";
+import DeleteUser from "./components/DeleteUser";
 import axios from "axios";
 
 // add code to switch between local and Heroku
@@ -104,7 +106,9 @@ handleNotValid = (e) => {
           <h1>Jay's Fretboard</h1>
           <Link to="/">Home</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/login">Login</Link>&nbsp;&nbsp;&nbsp;
-          <Link to="/signup">Signup </Link>
+          <Link to="/signup">Signup </Link>&nbsp;&nbsp;&nbsp;
+          <Link to="/change_password">Change Password </Link>&nbsp;&nbsp;&nbsp;
+          <Link to="/delete_user">Delete my user</Link>          
           <h4>{this.state.validatedUser} is logged in.</h4>
         </nav>
         <Route
@@ -131,6 +135,18 @@ handleNotValid = (e) => {
             />
           )}
         />
+        <Route
+        path="/change_password"
+        render={(routerProps) => (
+          <ChangePassword {...routerProps} handleChange={this.handleChange} />
+        )}
+      />
+        <Route
+        path="/delete_user"
+        render={(routerProps) => (
+          <DeleteUser {...routerProps} handleChange={this.handleChange} />
+        )}
+      />
       </div>
     );
   }

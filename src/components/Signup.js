@@ -12,7 +12,7 @@ function Signup(props) {
             type="text"
             name="name"
             value={props.name}
-            // placeholder="Your name (optional)"
+            placeholder="Your name (optional)"
             onChange={props.handleChange}
           />
           <br></br>
@@ -21,7 +21,7 @@ function Signup(props) {
             type="text"
             name="username"
             value={props.username}
-            // placeholder="Enter a login name"
+            placeholder="Enter a login name"
             onChange={props.handleChange}
           />
           <br></br>
@@ -30,7 +30,7 @@ function Signup(props) {
             type="text"
             name="password"
             value={props.password} 
-            // placeholder="password"
+            placeholder="password"
             onChange={props.handleChange}
           />
           <br></br>
@@ -39,7 +39,7 @@ function Signup(props) {
             type="text"
             name="confirmPwd"
             value={props.confirmPwd}
-            // placeholder="confirmPwd"
+            placeholder="confirmPwd"
             onChange={props.handleChange}
           />
           <br></br>
