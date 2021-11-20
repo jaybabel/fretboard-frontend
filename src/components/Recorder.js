@@ -1,5 +1,7 @@
 import React from 'react';
 import MicRecorder from 'mic-recorder-to-mp3';
+import Playback from './Playback';
+
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 
@@ -38,11 +40,11 @@ class Recorder extends React.Component {
   componentDidMount() {
     navigator.getUserMedia({ audio: true },
       () => {
-        console.log('Permission Granted');
+        console.log('Permission Granted - MP3 componentDidMount');
         this.setState({ isBlocked: false });
       },
       () => {
-        console.log('Permission Denied');
+        console.log('Permission Denied - MP3 componentDidMount');
         this.setState({ isBlocked: true })
       },
     );
@@ -51,14 +53,16 @@ class Recorder extends React.Component {
 
 render() {
   return (
+    <div className="recordingCenter">
     <div className="MP3_div">
           <audio src={this.state.blobURL} controls="controls" />        
         <header className="MP3_header">
           <button className="btnMP3" onClick={this.start} disabled={this.state.isRecording}>Record</button>
           <button className="btnMP3" onClick={this.stop} disabled={!this.state.isRecording}>Stop</button>
-
-        </header>      
+        </header>    
     </div>
+    <Playback />
+    </div>  
   );
 }
 }

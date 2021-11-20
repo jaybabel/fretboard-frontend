@@ -165,3 +165,8 @@ li {
 .divSignup h3 {
   text-align: center;
 }
+
+.recordingCenter {
+  border: 1px solid black;
+  width: 565px;
+}
