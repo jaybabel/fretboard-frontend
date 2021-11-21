@@ -1,5 +1,8 @@
 .App {
   background-color: antiquewhite;
+  background-image: url('./images/electricguitar1.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 
 h1 {
@@ -181,10 +184,10 @@ li {
 }
 
 #optSelectMP3 {
-  width: 300px;
+  width: 309px;
   height: 20px;
   margin-top: 10px;
-  margin-left: 55px;
+  margin-left: 106px;
 }
 
 #recordingurl {
