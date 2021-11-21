@@ -50,6 +50,8 @@ h1 {
   display: grid;
   grid-template-columns: 200px 200px 200px;
   grid-template-rows: auto auto;
+  background-color: rgb(245, 245, 245);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .chordImage {
@@ -166,10 +168,16 @@ li {
   text-align: center;
 }
 
+.oneScale {
+  width: 882px;
+}
+
 .recordingCenter {
   border: 1px solid black;
   width: 565px;
   height: 400px;
+  background:linear-gradient(#262626,#eaeaea,#262626);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 #optSelectMP3 {
