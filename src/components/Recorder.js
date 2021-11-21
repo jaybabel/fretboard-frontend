@@ -50,19 +50,52 @@ class Recorder extends React.Component {
     );
   }
 
+  submitKey = async (e) => {
+    e.preventDefault();
+
+  }
 
 render() {
   return (
     <div className="recordingCenter">
-    <div className="MP3_div">
-          <audio src={this.state.blobURL} controls="controls" />        
+      <form onSubmit={this.submitMP3Name}>
+        <select className="optSelectRecording" value={this.state.value}>
+          <option selected value="">
+            Select Recording Name
+          </option>
+        </select><br></br><br></br>
+        <label for="recordingurl">MP3 Location: </label>
+        <input
+            // onChange={props.handleChange}
+            type="text"
+            name="recordingurl"
+          /><br></br>
+          <p class="formfield">
+          <label id="lblMemo" for="memo">Memo: </label>
+          <textarea id="memo" name="" rows="4" columns="60"></textarea>
+          </p>
+      </form>
+      <div className="MP3_div">
+        <audio src={this.state.blobURL} controls="controls" />
         <header className="MP3_header">
-          <button className="btnMP3" onClick={this.start} disabled={this.state.isRecording}>Record</button>
-          <button className="btnMP3" onClick={this.stop} disabled={!this.state.isRecording}>Stop</button>
-        </header>    
+          <button
+            className="btnMP3"
+            onClick={this.start}
+            disabled={this.state.isRecording}
+          >
+            Record
+          </button>
+          <button
+            className="btnMP3"
+            onClick={this.stop}
+            disabled={!this.state.isRecording}
+          >
+            Stop
+          </button>
+        </header>
+      </div>
+      <Playback />
     </div>
-    <Playback />
-    </div>  
   );
 }
 }

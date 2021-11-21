@@ -1,7 +1,7 @@
 import React from 'react';
 
 function ChangePassword(props) {
-  console.log("login page", props);
+  console.log("change password page", props);
   return (
     <div>
       <h1>Change Password Page</h1>

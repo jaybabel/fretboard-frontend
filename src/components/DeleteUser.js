@@ -1,12 +1,12 @@
 import React from 'react';
 
 function DeleteUser(props) {
-  console.log("login page", props);
+  console.log("delete user page", props);
   return (
     <div>
       <h1>Delete User Page</h1>
       <div className="divLogin">
-        <form onSubmit={props.handleLogin}>
+        <form onSubmit={props.handleDeleteUser}>
           <h3>Username</h3>
           <input
             onChange={props.handleChange}

@@ -169,4 +169,9 @@ li {
 .recordingCenter {
   border: 1px solid black;
   width: 565px;
+  height: 300px;
+}
+
+.formfield * {
+  vertical-align: top;
 }

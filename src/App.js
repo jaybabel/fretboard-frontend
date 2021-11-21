@@ -35,7 +35,6 @@ class App extends Component {
   };
 
 // ********** Start - User signup code **********
-
 handleSignup = (e) => {
   e.preventDefault();  
   console.log('handleSignup ', e)
@@ -64,8 +63,23 @@ handleNotValid = (e) => {
       validated: false
     })
 }
+// xxxxxxxxxx  End - User signup code  xxxxxxxxxx
 
-// xxxxxxxxxx End - User signup code xxxxxxxxxx
+// ********** Start - DELETE USER code **********
+handleDeleteUser = (e) => {
+  e.preventDefault();
+  console.log('DELETE USER ')
+
+  const data = {
+    username: this.state.username
+  };
+
+  axios
+    .post(`${BASE_URL}/user/id:`, data)
+    .then((response) => {
+      console.log('User deleted...maybe.')
+    })}
+// xxxxxxxxxx  End - DELETE USER code  xxxxxxxxxx
 
 
   handleLogin = (e) => {
@@ -144,7 +158,11 @@ handleNotValid = (e) => {
         <Route
         path="/delete_user"
         render={(routerProps) => (
-          <DeleteUser {...routerProps} handleChange={this.handleChange} />
+          <DeleteUser 
+            {...routerProps}
+            handleChange={this.handleChange}
+            handleDeleteUser={this.handleDeleteUser}
+          />
         )}
       />
       </div>
