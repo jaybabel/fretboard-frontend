@@ -1,5 +1,6 @@
 import React from "react";
 
+
 function Login(props) {
   console.log("login page", props);
   return (
@@ -26,11 +27,9 @@ function Login(props) {
           <br></br>
           <br></br>
           <br></br>
-          <input type="submit" value="Login" />
-        </form>
+          <input type="submit" value="Login" />          
+        </form>   
       </div>
-
-
     </div>
   );
 }

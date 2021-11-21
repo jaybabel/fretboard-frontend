@@ -1,6 +1,7 @@
 import React from 'react';
 import MicRecorder from 'mic-recorder-to-mp3';
 import Playback from './Playback';
+import UserRecordings from './UserRecordings';
 
 
 const Mp3Recorder = new MicRecorder({ bitRate: 128 });
@@ -58,23 +59,7 @@ class Recorder extends React.Component {
 render() {
   return (
     <div className="recordingCenter">
-      <form onSubmit={this.submitMP3Name}>
-        <select id="optSelectMP3" className="optSelectRecording" value={this.state.value}>
-          <option selected value="">
-            Select Recording Name
-          </option>
-        </select><br></br>
-        <p class="formfield">
-        <label for="recordingurl">MP3 Location: </label>
-        <input id="recordingurl" name="recordingurl"
-            // onChange={props.handleChange}
-            type="text"
-          /></p>
-          <p class="formfield">
-          <label id="lblMemo" for="memo">Memo: </label>
-          <textarea id="memo" name="" rows="4" columns="60"></textarea></p>
-          <input className="btnMP3" type="submit" value="Submit" />
-      </form>
+      <UserRecordings />
       <br></br>
       <div className="MP3_div">
         <audio src={this.state.blobURL} controls="controls" />

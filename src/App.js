@@ -5,7 +5,7 @@ import ChordsSelection from "./components/ChordsSelection";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import ChangePassword from "./components/ChangePassword";
-import DeleteUser from "./components/DeleteUser";
+import Admin from "./components/Admin";
 import axios from "axios";
 
 // add code to switch between local and Heroku
@@ -21,6 +21,8 @@ class App extends Component {
     super();
 
     this.state = {
+      id: "",
+      name: "",
       username: "",
       password: "",
       loggedIn: false,
@@ -65,20 +67,33 @@ handleNotValid = (e) => {
 }
 // xxxxxxxxxx  End - User signup code  xxxxxxxxxx
 
+// ********** Start - CHANGE PASSWORD code **********
+handleChangePassword = (e) => {
+  e.preventDefault();
+  console.log('Change Password ')
+}
+// xxxxxxxxxx  End - Change password code  xxxxxxxxxx
+
 // ********** Start - DELETE USER code **********
 handleDeleteUser = (e) => {
   e.preventDefault();
   console.log('DELETE USER ')
 
   const data = {
-    username: this.state.username
+    username: this.state.id
   };
+  
+  this.state.validatedUser === "admin" ?
 
   axios
     .post(`${BASE_URL}/user/id:`, data)
     .then((response) => {
       console.log('User deleted...maybe.')
-    })}
+    })
+    :
+    console.log("Not authorized")
+
+  }
 // xxxxxxxxxx  End - DELETE USER code  xxxxxxxxxx
 
 
@@ -99,8 +114,6 @@ handleDeleteUser = (e) => {
         console.log('Is logged in: ', this.state.loggedIn)
         console.log('Logged in username is: ', this.state.validatedUser)
         console.log('response', response)
-        // this.setState({ username: "" });
-        // this.setState({ password: "" });
       })
 
       .catch((error) => {
@@ -122,7 +135,7 @@ handleDeleteUser = (e) => {
           <Link to="/login">Login</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/signup">Signup </Link>&nbsp;&nbsp;&nbsp;
           <Link to="/change_password">Change Password </Link>&nbsp;&nbsp;&nbsp;
-          <Link to="/delete_user">Delete my user</Link>          
+          <Link to="/admin">Admin</Link>          
           <h4>{this.state.validatedUser} is logged in.</h4>
         </nav>
         <Route
@@ -152,13 +165,14 @@ handleDeleteUser = (e) => {
         <Route
         path="/change_password"
         render={(routerProps) => (
-          <ChangePassword {...routerProps} handleChange={this.handleChange} />
+          <ChangePassword {...routerProps} 
+          handleChange={this.handleChange} />
         )}
       />
         <Route
-        path="/delete_user"
+        path="/admin"
         render={(routerProps) => (
-          <DeleteUser 
+          <Admin 
             {...routerProps}
             handleChange={this.handleChange}
             handleDeleteUser={this.handleDeleteUser}
