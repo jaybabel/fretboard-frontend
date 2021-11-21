@@ -169,9 +169,26 @@ li {
 .recordingCenter {
   border: 1px solid black;
   width: 565px;
-  height: 300px;
+  height: 400px;
+}
+
+#optSelectMP3 {
+  width: 300px;
+  height: 20px;
+  margin-top: 10px;
+  margin-left: 55px;
+}
+
+#recordingurl {
+  width: 300px;
+  height: 20px;
 }
 
 .formfield * {
+  padding-left: 5px;
   vertical-align: top;
+}
+
+#memo {
+  width: 352px;
 }
