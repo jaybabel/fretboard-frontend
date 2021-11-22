@@ -83,16 +83,16 @@ handleDeleteUser = (e) => {
   //   username: this.state.username
   // };
   
-  // this.state.validatedUser === "admin" ?
+  this.state.validatedUser === "admin" ?
 
   axios
     .post(`${BASE_URL}/user/delete/${e.target[0].value}`)
     .then((response) => {
       console.log('User deleted...maybe.')
     })
-    // :
+    :
     // console.log("Not authorized")
-    // use alert to advise
+   alert("You are not authorized to perform this function.")
 
   }
 // xxxxxxxxxx  End - DELETE USER code  xxxxxxxxxx
