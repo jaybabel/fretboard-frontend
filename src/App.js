@@ -87,9 +87,9 @@ axios
 // ********** Start - DELETE USER code **********
 handleDeleteUser = (e) => {
   e.preventDefault();
-  console.log('DELETE USER ', e)
+ // console.log('DELETE USER ', e)
   
-  this.state.validatedUser === "admin" ?
+  ((this.state.validatedUser === "admin") && (e.target[0].value !== "admin")) ?
 
   axios
     .post(`${BASE_URL}/user/delete/${e.target[0].value}`)
