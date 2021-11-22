@@ -207,3 +207,18 @@ li {
 #memo {
   width: 352px;
 }
+
+.divDeleteUser {
+  border: 1px solid black;
+  width: 400px;
+  margin-left: 400px;
+  margin-bottom: 50px;;
+  height: 500px;
+  justify-content: center;
+}
+
+.frmDeleteUser {
+  align-content: center;
+  justify-content: center;
+  margin-left: 25px;
+}

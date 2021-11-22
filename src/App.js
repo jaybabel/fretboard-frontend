@@ -77,21 +77,22 @@ handleChangePassword = (e) => {
 // ********** Start - DELETE USER code **********
 handleDeleteUser = (e) => {
   e.preventDefault();
-  console.log('DELETE USER ')
+  console.log('DELETE USER ', e)
 
-  const data = {
-    username: this.state.id
-  };
+  // const data = {
+  //   username: this.state.username
+  // };
   
-  this.state.validatedUser === "admin" ?
+  // this.state.validatedUser === "admin" ?
 
   axios
-    .post(`${BASE_URL}/user/id:`, data)
+    .post(`${BASE_URL}/user/delete/${e.target[0].value}`)
     .then((response) => {
       console.log('User deleted...maybe.')
     })
-    :
-    console.log("Not authorized")
+    // :
+    // console.log("Not authorized")
+    // use alert to advise
 
   }
 // xxxxxxxxxx  End - DELETE USER code  xxxxxxxxxx
