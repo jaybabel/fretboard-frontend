@@ -13,10 +13,11 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
 }
 
 class ChordsSelection extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
+            validatedUser: props.validatedUser,
             keylist: [],
             chords: [],
             scales: []

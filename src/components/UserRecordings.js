@@ -14,14 +14,15 @@ class UserRecordings extends Component {
     super(props);
 
     this.state = {
-      recordingData: {},
-      recordinglist: [],
-      recordingurl: [],
-      memo: []
+      validatedUser: props.validatedUser,
+      recordinglist: []
     };
   }
 
   componentDidMount = () => {
+    console.log("user recordings validated user: ", this.state.validatedUser) 
+    // this.state.validatedUser ?
+
     axios
       .get(`${BASE_URL}/user_recordings`)
 
@@ -29,7 +30,8 @@ class UserRecordings extends Component {
         this.setState({
           recordinglist: response.data,
         });
-      });
+      })
+      // : alert ('To use recording list, please log in.')
   };
 
   handleRecordingChange = async (e) => {
@@ -85,7 +87,6 @@ class UserRecordings extends Component {
             <input
               id="recordingurl"
               name="recordingurl"
-              // onChange={props.handleChange}
               type="text"
             />
           </p>

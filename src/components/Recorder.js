@@ -9,7 +9,9 @@ const Mp3Recorder = new MicRecorder({ bitRate: 128 });
 class Recorder extends React.Component {
   constructor(props){
     super(props);
+    
     this.state = {
+      validatedUser: props.validatedUser,
       isRecording: false,
       blobURL: '',
       isBlocked: false,
@@ -39,6 +41,7 @@ class Recorder extends React.Component {
   };
 
   componentDidMount() {
+    console.log("recorder validated user: ", this.state.validatedUser) 
     navigator.getUserMedia({ audio: true },
       () => {
         console.log('Permission Granted - MP3 componentDidMount');
