@@ -37,10 +37,23 @@ class UserRecordings extends Component {
     });
   };
 
+  submitKey = async (e) => {
+      e.preventDefault();
+
+      axios
+      .get(`${BASE_URL}/user_recordings/:${this.state.value}`)
+    
+      .then((response) => {
+        this.setState({
+          recordinglist: response.data,
+        });
+      });
+  };
+
   render() {
     return (
       <div>
-        <form onSubmit={this.submitMP3Name}>
+        <form onSubmit={this.submitKey}>
           <select
             id="optSelectMP3"
             className="optSelectRecording"
