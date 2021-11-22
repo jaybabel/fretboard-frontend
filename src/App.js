@@ -27,112 +27,99 @@ class App extends Component {
       password: "",
       loggedIn: false,
       validatedUser: "",
-      confirmPwd: ""
+      confirmPwd: "",
     };
   }
 
   handleChange = (e) => {
     this.setState({ ...this.state, [e.target.name]: e.target.value });
-    console.log('handleChange ', this.state.username, this.state.password);
+    console.log("handleChange ", this.state.username, this.state.password);
   };
 
-// ********** Start - User signup code **********
-handleSignup = (e) => {
-  e.preventDefault();  
-  console.log('handleSignup ', e)
+  handleSignup = (e) => {
+    e.preventDefault();
+    console.log("handleSignup ", e);
 
-  const data = {
-    name: this.state.name,
-    username: this.state.username,
-    password: this.state.password,
-    is_admin: false
-  }
+    const data = {
+      name: this.state.name,
+      username: this.state.username,
+      password: this.state.password,
+      is_admin: false,
+    };
 
-    axios.post(`${BASE_URL}/user/signup`, data)
+    axios.post(`${BASE_URL}/user/signup`, data);
+  };
 
-}
-
-handleValid = (e) => {
-  e.preventDefault()
+  handleValid = (e) => {
+    e.preventDefault();
     this.setState({
-      validated: true
-    })
-}
+      validated: true,
+    });
+  };
 
-handleNotValid = (e) => {
-  e.preventDefault()
+  handleNotValid = (e) => {
+    e.preventDefault();
     this.setState({
-      validated: false
-    })
-}
-// xxxxxxxxxx  End - User signup code  xxxxxxxxxx
+      validated: false,
+    });
+  };
 
-// ********** Start - CHANGE PASSWORD code **********
-handleChangePassword = (e) => {
-  e.preventDefault();
+  handleChangePassword = (e) => {
+    e.preventDefault();
 
-// password === confirmpassword ? good : alert no match
-// 
-((this.state.validatedUser === "admin") || (this.state.validatedUser === e.target[0].value)) ?
+    this.state.validatedUser === "admin" ||
+    this.state.validatedUser === e.target[0].value
+      ? axios
+          .post(
+            `${BASE_URL}/user/changePassword/${e.target[0].value}/${e.target[2].value}`
+          )
+          .then((response) => {
+            console.log("Password changed.");
+          })
+      : alert("You are not authorized to perform this function.");
+  };
 
-axios
-.post(`${BASE_URL}/user/changePassword/${e.target[0].value}/${e.target[2].value}`)
-.then((response) => {
-  console.log('Password changed.')
-    })
-:
-alert("You are not authorized to perform this function.")
-}
-// xxxxxxxxxx  End - Change password code  xxxxxxxxxx
+  handleDeleteUser = (e) => {
+    e.preventDefault();
 
-// ********** Start - DELETE USER code **********
-handleDeleteUser = (e) => {
-  e.preventDefault();
- // console.log('DELETE USER ', e)
-  
-  ((this.state.validatedUser === "admin") && (e.target[0].value !== "admin")) ?
-
-  axios
-    .post(`${BASE_URL}/user/delete/${e.target[0].value}`)
-    .then((response) => {
-      console.log('User deleted.')
-    })
-    :
-    alert("You are not authorized to perform this function.")
-  }
-// xxxxxxxxxx  End - DELETE USER code  xxxxxxxxxx
-
+    this.state.validatedUser === "admin" && e.target[0].value !== "admin"
+      ? axios
+          .post(`${BASE_URL}/user/delete/${e.target[0].value}`)
+          .then((response) => {
+            console.log("User deleted.");
+          })
+      : alert("You are not authorized to perform this function.");
+  };
 
   handleLogin = (e) => {
     e.preventDefault();
 
     const data = {
       username: this.state.username,
-      password: this.state.password
+      password: this.state.password,
     };
     axios
       .post(`${BASE_URL}/user/login`, data)
       .then((response) => {
         this.setState({
           loggedIn: true,
-          validatedUser: response.data.username
-        })
-        // console.log('Is logged in: ', this.state.loggedIn)
-        // console.log('Logged in username is: ', this.state.validatedUser)
-        console.log('response', response)
+          validatedUser: response.data.username,
+        });
+
+        console.log("response", response);
       })
 
       .catch((error) => {
-        console.log('error - ', error);
+        console.log("error - ", error);
         this.setState({
-          loggedIn: false
-        })
-        console.log('Is logged in: ', this.state.loggedIn)
+          loggedIn: false,
+        });
+        console.log("Is logged in: ", this.state.loggedIn);
       });
   };
 
   render() {
-    console.log('Is logged in: ', this.state.loggedIn)
+    console.log("Is logged in: ", this.state.loggedIn);
     return (
       <div className="App">
         <nav className="navHeader">
@@ -141,12 +128,18 @@ handleDeleteUser = (e) => {
           <Link to="/login">Login</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/signup">Signup </Link>&nbsp;&nbsp;&nbsp;
           <Link to="/changePassword">Change Password </Link>&nbsp;&nbsp;&nbsp;
-          <Link to="/admin">Admin</Link>          
+          <Link to="/admin">Admin</Link>
           <h4>{this.state.validatedUser} is logged in.</h4>
         </nav>
         <Route
-          exact path="/"
-          render={(routerProps) => <ChordsSelection {...routerProps} validatedUser={this.state.validatedUser} />}
+          exact
+          path="/"
+          render={(routerProps) => (
+            <ChordsSelection
+              {...routerProps}
+              validatedUser={this.state.validatedUser}
+            />
+          )}
         />
         <Route
           path="/login"
@@ -161,7 +154,7 @@ handleDeleteUser = (e) => {
         <Route
           path="/signup"
           render={(routerProps) => (
-            <Signup 
+            <Signup
               {...routerProps}
               handleChange={this.handleChange}
               handleSignup={this.handleSignup}
@@ -169,25 +162,26 @@ handleDeleteUser = (e) => {
           )}
         />
         <Route
-        path="/changePassword"
-        render={(routerProps) => (
-          <ChangePassword {...routerProps} 
-          handleChange={this.handleChange}
-          handleChangePassword={this.handleChangePassword}
-          validatedUser={this.state.validatedUser} 
-          />
-        )}
-      />
+          path="/changePassword"
+          render={(routerProps) => (
+            <ChangePassword
+              {...routerProps}
+              handleChange={this.handleChange}
+              handleChangePassword={this.handleChangePassword}
+              validatedUser={this.state.validatedUser}
+            />
+          )}
+        />
         <Route
-        path="/admin"
-        render={(routerProps) => (
-          <Admin 
-            {...routerProps}
-            handleChange={this.handleChange}
-            handleDeleteUser={this.handleDeleteUser}
-          />
-        )}
-      />
+          path="/admin"
+          render={(routerProps) => (
+            <Admin
+              {...routerProps}
+              handleChange={this.handleChange}
+              handleDeleteUser={this.handleDeleteUser}
+            />
+          )}
+        />
       </div>
     );
   }

@@ -43,16 +43,20 @@ class UserRecordings extends Component {
 
     const data = this.state.value
 
-    axios.post(`${BASE_URL}/user_recordings/getRecordingData`, {recordingname:data} )
+      this.state.value ? 
+      
+      axios.post(`${BASE_URL}/user_recordings/getRecordingData`, {recordingname:data} )
 
        .then((response) => {
         this.setState({
           recordingData: response.data
-        });
-        console.log(this.state.recordingData.recordingname);
-        console.log(this.state.recordingData.recordingurl);
-        console.log(this.state.recordingData.memo);
        });
+        {document.getElementById("recordingurl").value = this.state.recordingData.recordingurl}
+        {document.getElementById("memo").value = this.state.recordingData.memo}
+       })
+       : 
+       alert('Please make a selection')
+    
   };
 
   render() {
@@ -91,7 +95,7 @@ class UserRecordings extends Component {
             </label>
             <textarea id="memo" name="txtMemo" rows="4" columns="60"></textarea>
           </p>
-          <input className="btnMP3" type="submit" value="Submit" />
+          <input className="btnMP3" type="submit" value="Get Info" />
         </form>
       </div>
     );
