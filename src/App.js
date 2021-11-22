@@ -70,30 +70,34 @@ handleNotValid = (e) => {
 // ********** Start - CHANGE PASSWORD code **********
 handleChangePassword = (e) => {
   e.preventDefault();
-  console.log('Change Password ')
-}
+  console.log('Change Password ', e)
+
+// password === confirmpassword ? good : alert no match
+// {(this.state.validatedUser === "admin") || (this.state.validatedUser === e.target[0].value)} ?
+
+axios
+.post(`${BASE_URL}/user/changePassword/${e.target[0].value}/${e.target[2].value}`)
+.then((response) => {
+  console.log('Password changed.')
+    })
+  }
+
 // xxxxxxxxxx  End - Change password code  xxxxxxxxxx
 
 // ********** Start - DELETE USER code **********
 handleDeleteUser = (e) => {
   e.preventDefault();
   console.log('DELETE USER ', e)
-
-  // const data = {
-  //   username: this.state.username
-  // };
   
   this.state.validatedUser === "admin" ?
 
   axios
     .post(`${BASE_URL}/user/delete/${e.target[0].value}`)
     .then((response) => {
-      console.log('User deleted...maybe.')
+      console.log('User deleted.')
     })
     :
-    // console.log("Not authorized")
-   alert("You are not authorized to perform this function.")
-
+    alert("You are not authorized to perform this function.")
   }
 // xxxxxxxxxx  End - DELETE USER code  xxxxxxxxxx
 
@@ -112,8 +116,8 @@ handleDeleteUser = (e) => {
           loggedIn: true,
           validatedUser: response.data.username
         })
-        console.log('Is logged in: ', this.state.loggedIn)
-        console.log('Logged in username is: ', this.state.validatedUser)
+        // console.log('Is logged in: ', this.state.loggedIn)
+        // console.log('Logged in username is: ', this.state.validatedUser)
         console.log('response', response)
       })
 
@@ -135,7 +139,7 @@ handleDeleteUser = (e) => {
           <Link to="/">Home</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/login">Login</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/signup">Signup </Link>&nbsp;&nbsp;&nbsp;
-          <Link to="/change_password">Change Password </Link>&nbsp;&nbsp;&nbsp;
+          <Link to="/changePassword">Change Password </Link>&nbsp;&nbsp;&nbsp;
           <Link to="/admin">Admin</Link>          
           <h4>{this.state.validatedUser} is logged in.</h4>
         </nav>
@@ -164,10 +168,12 @@ handleDeleteUser = (e) => {
           )}
         />
         <Route
-        path="/change_password"
+        path="/changePassword"
         render={(routerProps) => (
           <ChangePassword {...routerProps} 
-          handleChange={this.handleChange} />
+          handleChange={this.handleChange}
+          handleChangePassword={this.handleChangePassword} 
+          />
         )}
       />
         <Route

@@ -6,8 +6,9 @@ function ChangePassword(props) {
     <div>
       <h1>Change Password Page</h1>
       <div className="divLogin">
-        <form onSubmit={props.handleLogin}>
+        <form onSubmit={props.handleChangePassword}>
           <h3>Username</h3>
+          <h3>{props.validatedUser} change your password.</h3>
           <input
             onChange={props.handleChange}
             type="text"
@@ -17,7 +18,7 @@ function ChangePassword(props) {
           <br></br>
           <br></br>
           <input
-            type="text"
+            type="password"
             name="password"
             value={props.password} 
             placeholder="current password"
@@ -27,7 +28,7 @@ function ChangePassword(props) {
           <br></br>
           <br></br>
           <input
-            type="text"
+            type="password"
             name="password"
             value={props.password} 
             placeholder="new password"
@@ -37,7 +38,7 @@ function ChangePassword(props) {
           <br></br>
           <br></br>
           <input
-            type="text"
+            type="password"
             name="password"
             value={props.password} 
             placeholder="confirm new password"

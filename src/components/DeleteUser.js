@@ -33,4 +33,4 @@ function DeleteUser(props) {
   );
 }
 
-export default DeleteUser;
+//export default DeleteUser;
