@@ -59,7 +59,7 @@ class Recorder extends React.Component {
 render() {
   return (
     <div className="recordingCenter">
-      <UserRecordings />
+      <UserRecordings validatedUser={this.state.validatedUser} />
       <br></br>
       <div className="MP3_div">
         <audio src={this.state.blobURL} controls="controls" />

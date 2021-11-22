@@ -93,7 +93,7 @@ class ChordsSelection extends Component {
                 <div className="divScales">
                     <Scales scales={this.state.scales} />
                     <div className="divRecorder">
-                        <Recorder />                           
+                        <Recorder validatedUser={this.state.validatedUser} />                           
                     </div>
                 </div>
             
