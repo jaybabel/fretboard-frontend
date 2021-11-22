@@ -29,6 +29,13 @@ Admin Page
 ![image](https://user-images.githubusercontent.com/8105789/141022241-86656f1e-7593-4eb6-b2b3-4a67d686d14c.png)
 
 
+## Architecture
+
+
+![ApplicationArchitecture](https://user-images.githubusercontent.com/8105789/142795717-14b09920-a319-4616-99e7-8bb4f78b2d19.png)
+
+
+
 ## User Stories
 
 * I am a guitar player and I want to select a musical key so I can play chord progressions
