@@ -1,14 +1,13 @@
 import React from 'react';
 
 function ChangePassword(props) {
-  console.log("change password page", props);
+  console.log("change password page", props.validatedUser);
   return (
     <div>
       <h1>Change Password Page</h1>
       <div className="divLogin">
         <form onSubmit={props.handleChangePassword}>
-          <h3>Username</h3>
-          <h3>{props.validatedUser} change your password.</h3>
+          <h3>{props.validatedUser} - change your password.</h3>
           <input
             onChange={props.handleChange}
             type="text"

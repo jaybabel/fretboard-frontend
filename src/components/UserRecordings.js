@@ -14,7 +14,7 @@ class UserRecordings extends Component {
     super(props);
 
     this.state = {
-      recordingData: [],
+      recordingData: {},
       recordinglist: [],
       recordingurl: [],
       memo: []
@@ -41,20 +41,18 @@ class UserRecordings extends Component {
   submitRecording = async (e) => {
       e.preventDefault();
 
-      const data = this.state.value
+    const data = this.state.value
 
     axios.post(`${BASE_URL}/user_recordings/getRecordingData`, {recordingname:data} )
 
-    // const [recordingNameResponse] = await Promise.all([
-    //   axios.get(`${BASE_URL}/user_recordings/getRecordingData/:${this.state.value}`)
-    // ]);
-    // this.setState({ recordingData: recordingNameResponse });
-
-      // .then((response) => {
-      //   this.setState({
-      //     recordinglist: response.data
-      //   });
-      //  });
+       .then((response) => {
+        this.setState({
+          recordingData: response.data
+        });
+        console.log(this.state.recordingData.recordingname);
+        console.log(this.state.recordingData.recordingurl);
+        console.log(this.state.recordingData.memo);
+       });
   };
 
   render() {
@@ -91,7 +89,7 @@ class UserRecordings extends Component {
             <label id="lblMemo" for="memo">
               Memo:{" "}
             </label>
-            <textarea id="memo" name="" rows="4" columns="60"></textarea>
+            <textarea id="memo" name="txtMemo" rows="4" columns="60"></textarea>
           </p>
           <input className="btnMP3" type="submit" value="Submit" />
         </form>

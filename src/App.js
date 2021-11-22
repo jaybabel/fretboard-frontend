@@ -70,18 +70,19 @@ handleNotValid = (e) => {
 // ********** Start - CHANGE PASSWORD code **********
 handleChangePassword = (e) => {
   e.preventDefault();
-  console.log('Change Password ', e)
 
 // password === confirmpassword ? good : alert no match
-// {(this.state.validatedUser === "admin") || (this.state.validatedUser === e.target[0].value)} ?
+// 
+((this.state.validatedUser === "admin") || (this.state.validatedUser === e.target[0].value)) ?
 
 axios
 .post(`${BASE_URL}/user/changePassword/${e.target[0].value}/${e.target[2].value}`)
 .then((response) => {
   console.log('Password changed.')
     })
-  }
-
+:
+alert("You are not authorized to perform this function.")
+}
 // xxxxxxxxxx  End - Change password code  xxxxxxxxxx
 
 // ********** Start - DELETE USER code **********
@@ -172,7 +173,8 @@ handleDeleteUser = (e) => {
         render={(routerProps) => (
           <ChangePassword {...routerProps} 
           handleChange={this.handleChange}
-          handleChangePassword={this.handleChangePassword} 
+          handleChangePassword={this.handleChangePassword}
+          validatedUser={this.state.validatedUser} 
           />
         )}
       />
