@@ -14,6 +14,7 @@ class UserRecordings extends Component {
     super(props);
 
     this.state = {
+      recordingData: [],
       recordinglist: [],
       recordingurl: [],
       memo: []
@@ -31,33 +32,39 @@ class UserRecordings extends Component {
       });
   };
 
-  handleKeyChange = async (e) => {
+  handleRecordingChange = async (e) => {
     await this.setState({
       value: e.target.value,
     });
   };
 
-  submitKey = async (e) => {
+  submitRecording = async (e) => {
       e.preventDefault();
 
-      axios
-      .get(`${BASE_URL}/user_recordings/:${this.state.value}`)
-    
-      .then((response) => {
-        this.setState({
-          recordinglist: response.data,
-        });
-      });
+      const data = this.state.value
+
+    axios.post(`${BASE_URL}/user_recordings/getRecordingData`, {recordingname:data} )
+
+    // const [recordingNameResponse] = await Promise.all([
+    //   axios.get(`${BASE_URL}/user_recordings/getRecordingData/:${this.state.value}`)
+    // ]);
+    // this.setState({ recordingData: recordingNameResponse });
+
+      // .then((response) => {
+      //   this.setState({
+      //     recordinglist: response.data
+      //   });
+      //  });
   };
 
   render() {
     return (
       <div>
-        <form onSubmit={this.submitKey}>
+        <form onSubmit={this.submitRecording}>
           <select
             id="optSelectMP3"
             className="optSelectRecording"
-            value={this.state.value}
+            value={this.state.value} onChange={this.handleRecordingChange}
           >
             <option selected value="">
               Select Recording Name

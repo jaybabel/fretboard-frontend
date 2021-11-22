@@ -135,7 +135,7 @@ handleDeleteUser = (e) => {
     return (
       <div className="App">
         <nav className="navHeader">
-          <h1>Jay's Fretboard</h1>
+          <h1 id="banner">Jay's Fretboard</h1>
           <Link to="/">Home</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/login">Login</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/signup">Signup </Link>&nbsp;&nbsp;&nbsp;
@@ -145,7 +145,7 @@ handleDeleteUser = (e) => {
         </nav>
         <Route
           exact path="/"
-          render={(routerProps) => <ChordsSelection {...routerProps} />}
+          render={(routerProps) => <ChordsSelection {...routerProps} validatedUser={this.state.validatedUser} />}
         />
         <Route
           path="/login"
