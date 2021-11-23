@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { Component } from "react";
-import { Route, Link } from "react-router-dom";
+import { Route, Link, withRouter } from "react-router-dom";
 import ChordsSelection from "./components/ChordsSelection";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
@@ -44,11 +44,18 @@ class App extends Component {
       name: this.state.name,
       username: this.state.username,
       password: this.state.password,
+      confirmedPwd: this.state.confirmPwd,
       is_admin: false,
     };
 
+    this.state.confirmPwd !== this.state.password ? alert('Passwords do not match.') :
+    
     axios.post(`${BASE_URL}/user/signup`, data);
+
+    this.props.history.push("/");    
+
   };
+
 
   handleValid = (e) => {
     e.preventDefault();
@@ -74,10 +81,11 @@ class App extends Component {
             `${BASE_URL}/user/changePassword/${e.target[0].value}/${e.target[2].value}`
           )
           .then((response) => {
-            console.log("Password changed.");
+            this.props.history.push("/");
           })
       : alert("You are not authorized to perform this function.");
-  };
+
+    };
 
   handleDeleteUser = (e) => {
     e.preventDefault();
@@ -89,6 +97,8 @@ class App extends Component {
             console.log("User deleted.");
           })
       : alert("You are not authorized to perform this function.");
+
+      this.props.history.push("/"); 
   };
 
   handleLogin = (e) => {
@@ -105,8 +115,7 @@ class App extends Component {
           loggedIn: true,
           validatedUser: response.data.username,
         });
-
-        console.log("response", response);
+        this.props.history.push("/");
       })
 
       .catch((error) => {
@@ -187,4 +196,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withRouter(App);

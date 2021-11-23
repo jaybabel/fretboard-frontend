@@ -1,7 +1,7 @@
 import React from "react";
 
 function Signup(props) {
-  console.log('Signup: ', props);
+
   return (
     <div>
       <h1>Signup Form</h1>
@@ -27,7 +27,7 @@ function Signup(props) {
           <br></br>
           <br></br>
           <input
-            type="text"
+            type="password"
             name="password"
             value={props.password} 
             placeholder="password"
@@ -36,7 +36,7 @@ function Signup(props) {
           <br></br>
           <br></br>
           <input
-            type="text"
+            type="password"
             name="confirmPwd"
             value={props.confirmPwd}
             placeholder="confirmPwd"
