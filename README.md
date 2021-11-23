@@ -99,17 +99,47 @@ Scales Diagrams - https://www.guitarscale.org/all-scales.html
 ## Audio Recording
 
 ### react-mp3-audio-recording
-Sample code includes ability to download and adjust playback speed.
+After evaluating a couple of recording methods, I decided to use the method described on this webpage:
 
 https://medium.com/front-end-weekly/recording-audio-in-mp3-using-reactjs-under-5-minutes-5e960defaf10
 
+This method uses MP3 audio files which are smaller than wav files and better suited for my application.  In addition to record and playback, the sample code includes ability to download the file and adjust playback speed.  Aside from the file size, the wav code I considered was much less complete and would have been difficult to implement (see audio-react-recorder section below).
+
+The recorder is created using the React mic-recorder-to-mp3 package.
+
 npm install --save mic-recorder-to-mp3
+
+I used the code from the following GitHub repo:
 
 https://github.com/Matheswaaran/react-mp3-audio-recording/blob/master/src/App.js
 
+This is the code in my Return that renders the MP3 recorder:
+
+```
+      <div className="MP3_div">
+        <audio src={this.state.blobURL} controls="controls" />
+        <header className="MP3_header">
+          <button
+            className="btnMP3"
+            onClick={this.start}
+            disabled={this.state.isRecording}
+          >
+            Record
+          </button>
+          <button
+            className="btnMP3"
+            onClick={this.stop}
+            disabled={!this.state.isRecording}
+          >
+            Stop
+          </button>
+        </header>
+      </div>
+```
+
 ### Play-Pause-Stop and Loop MP3 code
 
-The code for playback of MP3 was taken from:
+The Play, Pause, and Stop buttons along with the Loop checkbox are independent of the MP3 recorder outlined above.  The code for playback of MP3 files was taken from:
 
 https://www.cluemediator.com/how-to-play-an-mp3-file-in-reactjs
 
