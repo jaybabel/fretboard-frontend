@@ -73,9 +73,9 @@ Admin Page
 
 * Guitar scales are pulled from www.tofret.com API based on selected chords.  Scale diagrams rendered dynamically using canvas.
 
-* Implement Oauth security for user logon.
+* Setup Bcrypt for user passwords.
 
-* Delete related records (i.e. user is deleted and associated recordings are deleted using cascade)
+* Implement Oauth security for user logon.
 
 *Refer to Project Kanban for current enhancements backlog.*
 
