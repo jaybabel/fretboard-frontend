@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react';
 function Playback2() {
  
   // use Audio constructor to create HTMLAudioElement
-  const audioTune = new Audio('./WishYouWereHere.mp3');
+  const mp3recording = './WishYouWereHere.mp3'
+  const audioTune = new Audio(mp3recording);
  
   // variable to play audio in loop
   const [playInLoop, setPlayInLoop] = useState(false);
