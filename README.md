@@ -5,7 +5,7 @@ SEI Project 4 - Circle of 5ths Chords and Scales
 
 Description
 
-This application will display six guitar chords based on the key chosen from the Circle of Fifths.  The user will be able to choose open chords or bar chords and the application will display one or more scales that can be used with the chords chosen.  The application will have a record function and allow users to save recordings.
+This application displays six guitar chords based on the key chosen from the Circle of Fifths.  The user can choose open chords or bar chords and the application will display two to four scales that can be used with the chords chosen.  The application has a record function that allows users to save the recordings in MP3 format.
 
 ## ERD
 
