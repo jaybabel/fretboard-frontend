@@ -103,6 +103,13 @@ npm install --save mic-recorder-to-mp3
 
 https://github.com/Matheswaaran/react-mp3-audio-recording/blob/master/src/App.js
 
+### Play-Pause-Stop and Loop MP3 code
+
+The code for playback of MP3 was taken from:
+
+https://www.cluemediator.com/how-to-play-an-mp3-file-in-reactjs
+
+Other than a little styling, I used the code as provided by the website.
 
 
 ### audio-react-recorder
