@@ -133,12 +133,13 @@ class App extends Component {
       <div className="App">
         <nav className="navHeader">
           <h1 id="banner">Jay's Fretboard</h1>
+          <h4>{this.state.validatedUser} is logged in.</h4>
           <Link to="/">Home</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/login">Login</Link>&nbsp;&nbsp;&nbsp;
           <Link to="/signup">Signup </Link>&nbsp;&nbsp;&nbsp;
           <Link to="/changePassword">Change Password </Link>&nbsp;&nbsp;&nbsp;
           <Link to="/admin">Admin</Link>
-          <h4>{this.state.validatedUser} is logged in.</h4>
+
         </nav>
         <Route
           exact
