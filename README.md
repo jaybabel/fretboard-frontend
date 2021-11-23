@@ -1,6 +1,8 @@
 # fretboard
 SEI Project 4 - Circle of 5ths Chords and Scales
 
+Backend README - https://github.com/jaybabel/fretboard-backend/blob/main/README.md
+
 ## Project 4 – Progressions and Scales (a.k.a. Jay’s Fretboard)
 
 Description
