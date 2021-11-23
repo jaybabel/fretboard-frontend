@@ -3,7 +3,7 @@ import React from "react";
 function Signup(props) {
 
   return (
-    <div>
+    <div className="LSCA">
       <h1>Signup Form</h1>
       <div className="divSignup">
         <form onSubmit={props.handleSignup}>

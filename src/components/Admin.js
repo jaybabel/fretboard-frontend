@@ -3,7 +3,7 @@ import React from "react";
 function Admin(props) {
   console.log("Admin page props: ", props);
   return (
-    <div>
+    <div className="LSCA">
       <h1>Admin Page</h1>
       <div className="divDeleteUser">
         <h1>Delete User</h1>

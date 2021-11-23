@@ -4,7 +4,7 @@ import React from "react";
 function Login(props) {
   console.log("login page", props);
   return (
-    <div>
+    <div className="LSCA">
       <h1>User Login Page</h1>
       <div className="divLogin">
         <form onSubmit={props.handleLogin}>

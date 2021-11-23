@@ -3,6 +3,16 @@
   background-image: url('./images/electricguitar1.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  display: inline-flex;
+}
+
+.navHeader {
+  display: block;
+}
+
+.LSCA {
+  width: 1200px;
+  height: 700px;
 }
 
 h1 {
@@ -14,7 +24,7 @@ h1 {
   text-shadow: #131212;
   font-size: 60px;
   font-style: oblique;
-  color: gold;
+  color: red;
   text-shadow: 3px 3px black;
   padding-top: 10px;
 }

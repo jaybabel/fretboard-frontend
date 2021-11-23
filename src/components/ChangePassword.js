@@ -3,7 +3,7 @@ import React from 'react';
 function ChangePassword(props) {
   console.log("change password page", props.validatedUser);
   return (
-    <div>
+    <div className="LSCA">
       <h1>Change Password Page</h1>
       <div className="divLogin">
         <form onSubmit={props.handleChangePassword}>
