@@ -14,15 +14,6 @@ function ChangePassword(props) {
             name="username"
             placeholder="username"
           />
-          {/* <br></br>
-          <br></br>
-          <input
-            type="password"
-            name="password"
-            value={props.password} 
-            placeholder="current password"
-            onChange={props.handleChange}
-          /> */}
           <br></br>
           <br></br>
           <br></br>
