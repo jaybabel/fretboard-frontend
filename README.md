@@ -77,7 +77,7 @@ Admin Page
 
 * Delete related records (i.e. user is deleted and associated recordings are deleted using cascade)
 
-'''Refer to Project Kanban for current enhancements backlog.
+*Refer to Project Kanban for current enhancements backlog.*
 
 
 ## New (untaught) Components
