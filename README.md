@@ -113,11 +113,18 @@ The code for playback of MP3 was taken from:
 
 https://www.cluemediator.com/how-to-play-an-mp3-file-in-reactjs
 
-Other than a little styling, I used the code as provided by the website.
+Other than a little styling, I used the code as provided by the website.  The code is pretty straight-forward, it shows how to use the Javascript Audio() constructor which utilizes the HTML audio element.  The methods used in the code can be found at:
 
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
+
+Additional references:
+
+https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement/Audio
+
+https://www.w3schools.com/html/html5_audio.asp
 
 ### audio-react-recorder
-First attempt was with audio-react-recorder.  Had some dependency issues.  Code provided didi not fully reproduce the provided demo.
+First attempt was with audio-react-recorder.  Had some dependency issues.  Code provided did not fully reproduce the provided demo.
 
 React Recorder - https://www.npmjs.com/package/audio-react-recorder
 	Required:
