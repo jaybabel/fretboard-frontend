@@ -14,7 +14,7 @@ function ChangePassword(props) {
             name="username"
             placeholder="username"
           />
-          <br></br>
+          {/* <br></br>
           <br></br>
           <input
             type="password"
@@ -22,10 +22,11 @@ function ChangePassword(props) {
             value={props.password} 
             placeholder="current password"
             onChange={props.handleChange}
-          />
+          /> */}
           <br></br>
           <br></br>
           <br></br>
+          <label>New password</label><br></br>
           <input
             type="password"
             name="password"
@@ -36,6 +37,7 @@ function ChangePassword(props) {
           <br></br>
           <br></br>
           <br></br>
+          <label>Retype password</label><br></br>
           <input
             type="password"
             name="password"
