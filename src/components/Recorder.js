@@ -1,6 +1,6 @@
 import React from 'react';
 import MicRecorder from 'mic-recorder-to-mp3';
-import Playback2 from './Playback2';
+// import Playback2 from './Playback2';
 import UserRecordings from './UserRecordings';
 
 
@@ -83,7 +83,7 @@ render() {
           </button>
         </header>
       </div>
-      <Playback2 />
+      {/* <Playback2 /> */}
     </div>
   );
 }

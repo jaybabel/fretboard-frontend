@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import Playback2 from './Playback2';
 
 // add code to switch between local and Heroku
 let BASE_URL = "";
@@ -99,6 +100,7 @@ class UserRecordings extends Component {
           </p>
           <input className="btnMP3" type="submit" value="Get Info" />
         </form>
+        <Playback2 />
       </div>
     );
   }
