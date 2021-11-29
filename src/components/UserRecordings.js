@@ -22,7 +22,7 @@ class UserRecordings extends Component {
   componentDidMount = () => {
     console.log("user recordings validated user: ", this.state.validatedUser) 
 
-    this.state.validatedUser ?
+    // this.state.validatedUser ?
 
     axios
       .get(`${BASE_URL}/user_recordings`)
@@ -32,7 +32,7 @@ class UserRecordings extends Component {
           recordinglist: response.data,
         });
       })
-     : alert ('To use recording list, please log in.')
+    //  : alert ('To use recording list, please log in.')
   };
 
   handleRecordingChange = async (e) => {
