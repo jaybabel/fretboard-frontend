@@ -26,8 +26,8 @@ class UserRecordings extends Component {
     // this.state.validatedUser ?
 
     axios
-      .get(`${BASE_URL}/user_recordings`)
-
+//      .get(`${BASE_URL}/user_recordings`)
+      .get(`${BASE_URL}/user_recordings/${this.state.validatedUser}`)
       .then((response) => {
         this.setState({
           recordinglist: response.data,
