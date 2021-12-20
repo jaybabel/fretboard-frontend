@@ -43,10 +43,13 @@ class UserRecordings extends Component {
   };
 
   submitRecording = async (e) => {
+
       e.preventDefault();
+    console.log('submit e: ', e.nativeEvent.submitter.defaultValue);      
+      console.log('this.state.value: ', this.state.value);
 
     const data = this.state.value
-
+    if (e.nativeEvent.submitter.defaultValue == 'Get Info') {
       this.state.value ? 
       
       axios.post(`${BASE_URL}/user_recordings/getRecordingData`, {recordingname:data} )
@@ -60,8 +63,26 @@ class UserRecordings extends Component {
        })
        : 
        alert('Please make a selection')
-    
+      } else if (e.nativeEvent.submitter.defaultValue === 'Update') {
+        alert('UPDATE button pushed')
+      } else if (e.nativeEvent.submitter.defaultValue === 'New') {
+        alert('NEW button pushed')
+      } else if (e.nativeEvent.submitter.defaultValue === 'Save') {
+        alert('SAVE button pushed')
+      } else if (e.nativeEvent.submitter.defaultValue === 'Delete') {
+        alert('DELETE button pushed')
+      } else {
+        alert('different button pushed')
+      }
   };
+
+  // submitEvent = async (e) => {
+  //   e.preventDefault();
+  //   console.log('submit e: ', e.nativeEvent.submitter.defaultValue);
+  //   if (e.nativeEvent.submitter.defaultValue == 'Get Info') {
+  //     {this.submitRecording};
+  //   }
+  // }
 
   render() {
     return (
@@ -99,6 +120,9 @@ class UserRecordings extends Component {
             <textarea id="memo" name="txtMemo" rows="4" columns="60"></textarea>
           </p>
           <input className="btnMP3" type="submit" value="Get Info" />
+          <input className="btnMP3" type="submit" value="Update" />
+          <input className="btnMP3" type="submit" value="New" />
+          <input className="btnMP3" type="submit" value="Save" />          <input className="btnMP3" type="submit" value="Delete" />
         </form>
         <Playback2 />
       </div>
