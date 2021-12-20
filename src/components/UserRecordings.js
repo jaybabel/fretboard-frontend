@@ -76,14 +76,6 @@ class UserRecordings extends Component {
       }
   };
 
-  // submitEvent = async (e) => {
-  //   e.preventDefault();
-  //   console.log('submit e: ', e.nativeEvent.submitter.defaultValue);
-  //   if (e.nativeEvent.submitter.defaultValue == 'Get Info') {
-  //     {this.submitRecording};
-  //   }
-  // }
-
   render() {
     return (
       <div>
