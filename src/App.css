@@ -215,11 +215,15 @@ li {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+#lblSelectMP3 {
+  margin-left: 5px;
+}
+
 #optSelectMP3 {
   width: 309px;
   height: 20px;
   margin-top: 10px;
-  margin-left: 106px;
+  margin-left: 19px;
 }
 
 #recordingurl {
