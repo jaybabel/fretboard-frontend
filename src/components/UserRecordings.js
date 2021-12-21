@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Playback2 from "./Playback2";
+import { render } from "@testing-library/react";
 
 // add code to switch between local and Heroku
 let BASE_URL = "";
@@ -67,14 +68,33 @@ class UserRecordings extends Component {
             })
         : alert("Please make a selection");
     } else if (e.nativeEvent.submitter.defaultValue === "Update") {
-      alert("UPDATE button pushed");
+        alert("UPDATE button pushed");
     } else if (e.nativeEvent.submitter.defaultValue === "New") {
-      alert("NEW button pushed");
+        // alert("NEW button pushed");
+        document.getElementById("optSelectMP3").outerHTML = '<input id="optSelectMP3" type="text"/>';
+        document.getElementById("recordingurl").value = '';
+        document.getElementById("memo").value = '';
     } else if (e.nativeEvent.submitter.defaultValue === "Save") {
-      alert("SAVE button pushed");
+        alert("SAVE button pushed");
+        const data = {
+          username: this.state.validatedUser,
+          recordingname: document.getElementById("optSelectMP3").value,
+          recordingurl: document.getElementById("recordingurl").value,
+          memo: document.getElementById("memo").value
+        }
+        console.log('SAVE data - ', data);
+
+        axios.post(`${BASE_URL}/user_recordings/addRecording`, data);
+
+       // this.componentDidMount();
+        document.getElementById("optSelectMP3").outerHTML = '<select id="optSelectMP3" className="optSelectRecording" value={this.state.value} onChange={this.handleRecordingChange} />';
+        document.getElementById("optSelectMP3").innerHTML = '<option selected value=""> Select Recording Name </option>';
+        // ${this.state.recordinglist.map((recording, index) => { return (<option key={recording.id} value={recording.recordingname}> {recording.recordingname} </option>);})}`;
+        document.getElementById("recordingurl").value = '';
+        document.getElementById("memo").value = '';           
     } else if (e.nativeEvent.submitter.defaultValue === "Delete") {
       if (
-        window.confirm("Are you sure you want to DELETE this record?") == true
+        window.confirm("Are you sure you want to DELETE this record?") === true
       ) {
         alert("Record deleted");
       } else {
@@ -121,7 +141,7 @@ class UserRecordings extends Component {
           <input className="btnMP3" type="submit" value="Get Info" />
           <input className="btnMP3" type="submit" value="Update" />
           <input className="btnMP3" type="submit" value="New" />
-          <input className="btnMP3" type="submit" value="Save" />{" "}
+          <input className="btnMP3" type="submit" value="Save" />
           <input className="btnMP3" type="submit" value="Delete" />
         </form>
         <Playback2 />
