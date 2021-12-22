@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import Playback2 from "./Playback2";
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
+// import { isCompositeComponent } from "react-dom/test-utils";
 
 // add code to switch between local and Heroku
 let BASE_URL = "";
@@ -22,10 +23,8 @@ class UserRecordings extends Component {
   }
 
   componentDidMount = () => {
-    console.log("user recordings validated user: ", this.state.validatedUser);
 
     axios
-      //      .get(`${BASE_URL}/user_recordings`)
       .get(`${BASE_URL}/user_recordings/${this.state.validatedUser}`)
       .then((response) => {
         this.setState({
@@ -42,11 +41,9 @@ class UserRecordings extends Component {
 
   submitRecording = async (e) => {
     e.preventDefault();
-    console.log("submit e: ", e.nativeEvent.submitter.defaultValue);
-    console.log("this.state.value: ", this.state.value);
 
     const data = this.state.value;
-    if (e.nativeEvent.submitter.defaultValue == "Get Info") {
+    if (e.nativeEvent.submitter.defaultValue === "Get Info") {
       this.state.value
         ? axios
             .post(`${BASE_URL}/user_recordings/getRecordingData`, {
@@ -75,7 +72,21 @@ class UserRecordings extends Component {
         document.getElementById("recordingurl").value = '';
         document.getElementById("memo").value = '';
     } else if (e.nativeEvent.submitter.defaultValue === "Save") {
-        alert("SAVE button pushed");
+        alert("New record saved.");
+
+// console.log('axios call ', this.state.validatedUser);
+// post & get are receiving 404 errors - works with Postman
+      // axios.post(`${BASE_URL}/user/userId/${this.state.validatedUser}`)
+      //     .then((response) => { 
+      //       console.log('response data ', response.data);
+      //      this.setState({ userId: response.data });
+      //   })
+      //   .catch((error) => {
+      //     console.log(error)
+      //   });
+
+         console.log('User ID: ', this.state.userId);
+
         const data = {
           username: this.state.validatedUser,
           recordingname: document.getElementById("optSelectMP3").value,
@@ -84,7 +95,7 @@ class UserRecordings extends Component {
         }
         console.log('SAVE data - ', data);
 
-        axios.post(`${BASE_URL}/user_recordings/addRecording`, data);
+        axios.post(`${BASE_URL}/user_recordings/addRecording/`, data);
 
        // this.componentDidMount();
         document.getElementById("optSelectMP3").outerHTML = '<select id="optSelectMP3" className="optSelectRecording" value={this.state.value} onChange={this.handleRecordingChange} />';
