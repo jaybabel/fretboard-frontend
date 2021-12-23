@@ -31,6 +31,17 @@ class UserRecordings extends Component {
           recordinglist: response.data,
         });
       });
+      //=============================================================
+      const username = this.state.validatedUser
+
+      axios.post(`${BASE_URL}/user/userId/`, {username})
+          .then((response) => { 
+            console.log('response data ', response.data);
+           this.setState({ userId: response.data.foundId.id });
+        })
+        .catch((error) => {
+          console.log(error)
+        });
   };
 
   handleRecordingChange = async (e) => {
@@ -76,19 +87,22 @@ class UserRecordings extends Component {
 
 // console.log('axios call ', this.state.validatedUser);
 // post & get are receiving 404 errors - works with Postman
-      // axios.post(`${BASE_URL}/user/userId/${this.state.validatedUser}`)
-      //     .then((response) => { 
-      //       console.log('response data ', response.data);
-      //      this.setState({ userId: response.data });
-      //   })
-      //   .catch((error) => {
-      //     console.log(error)
-      //   });
+// const username = this.state.validatedUser
+
+//       axios.post(`${BASE_URL}/user/userId/`, {username})
+//           .then((response) => { 
+//             console.log('response data ', response.data);
+//            this.setState({ userId: response.data.foundId.id });
+//         })
+//         .catch((error) => {
+//           console.log(error)
+//         });
 
          console.log('User ID: ', this.state.userId);
 
         const data = {
-          username: this.state.validatedUser,
+//          username: this.state.validatedUser,
+          userId: this.state.userId,
           recordingname: document.getElementById("optSelectMP3").value,
           recordingurl: document.getElementById("recordingurl").value,
           memo: document.getElementById("memo").value
