@@ -34,7 +34,7 @@ Admin Page
 ## Architecture
 
 
-![ApplicationArchitecture](https://user-images.githubusercontent.com/8105789/142795717-14b09920-a319-4616-99e7-8bb4f78b2d19.png)
+![ApplicationArchitecture_2](https://user-images.githubusercontent.com/8105789/147198664-4f47d484-5baa-44d2-9ee1-c7ce602ef4e1.png)
 
 
 
