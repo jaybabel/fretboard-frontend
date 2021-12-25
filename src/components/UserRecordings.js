@@ -77,56 +77,53 @@ class UserRecordings extends Component {
         : alert("Please make a selection");
     } else if (e.nativeEvent.submitter.defaultValue === "Update") {
         alert("UPDATE button pushed");
-    } else if (e.nativeEvent.submitter.defaultValue === "New") {
-        // alert("NEW button pushed");
+    } else if ((e.nativeEvent.submitter.defaultValue === "New") && !(this.state.validatedUser === '')) {
+    // NEW selection.  Change MP3 Name field to text input, clear all form fields
         document.getElementById("optSelectMP3").outerHTML = '<input id="optSelectMP3" type="text"/>';
         document.getElementById("recordingurl").value = '';
-        document.getElementById("memo").value = '';
-    } else if (e.nativeEvent.submitter.defaultValue === "Save") {
-        alert("New record saved.");
-
-// console.log('axios call ', this.state.validatedUser);
-// post & get are receiving 404 errors - works with Postman
-// const username = this.state.validatedUser
-
-//       axios.post(`${BASE_URL}/user/userId/`, {username})
-//           .then((response) => { 
-//             console.log('response data ', response.data);
-//            this.setState({ userId: response.data.foundId.id });
-//         })
-//         .catch((error) => {
-//           console.log(error)
-//         });
-
-         console.log('User ID: ', this.state.userId);
-
+        document.getElementById("memo").value = '';          
+        
+    } else if ((e.nativeEvent.submitter.defaultValue === "Save") && !(this.state.validatedUser === '')) {
+    // SAVE selection.
+    //  alert("Save in progress.");
+    console.log('User ID: ', this.state.userId);
         const data = {
-//          username: this.state.validatedUser,
           userId: this.state.userId,
           recordingname: document.getElementById("optSelectMP3").value,
           recordingurl: document.getElementById("recordingurl").value,
           memo: document.getElementById("memo").value
         }
-        console.log('SAVE data - ', data);
-
+    console.log('SAVE data - ', data);
+        data.recordingname == '' ?
+        alert('Record not save. Name field is empty.') :
         axios.post(`${BASE_URL}/user_recordings/addRecording/`, data);
-
-       // this.componentDidMount();
+       // Change MP3 Name field back to dropdown
         document.getElementById("optSelectMP3").outerHTML = '<select id="optSelectMP3" className="optSelectRecording" value={this.state.value} onChange={this.handleRecordingChange} />';
         document.getElementById("optSelectMP3").innerHTML = '<option selected value=""> Select Recording Name </option>';
         // ${this.state.recordinglist.map((recording, index) => { return (<option key={recording.id} value={recording.recordingname}> {recording.recordingname} </option>);})}`;
         document.getElementById("recordingurl").value = '';
-        document.getElementById("memo").value = '';           
-    } else if (e.nativeEvent.submitter.defaultValue === "Delete") {
+        document.getElementById("memo").value = '';
+
+    } else if ((e.nativeEvent.submitter.defaultValue === "Delete") && !(this.state.validatedUser === '')) {
+
       if (
-        window.confirm("Are you sure you want to DELETE this record?") === true
+        window.confirm('Are you sure you want to DELETE this record?') === true
       ) {
-        alert("Record deleted");
+      
+        axios.post(`${BASE_URL}/user_recordings/deleteRecording/${this.state.recordingData.id}`);
+  
+         document.getElementById("optSelectMP3").outerHTML = '<input id="optSelectMP3" type="text"/>';
+         document.getElementById("recordingurl").value = '';
+         document.getElementById("memo").value = '';
+         alert("Record deleted");
+      
       } else {
         alert("Delete cancelled");
       }
+    // { alert("No record selected (Get Info)") };
+
     } else {
-      alert("different button pushed");
+      alert("You must log in to use this function.");
     }
   };
 
