@@ -44,48 +44,53 @@ class UserRecordings extends Component {
         });
   };
 
+
+handleGetInfo = async (e) => {
+  const data = this.state.value;
+  this.state.value
+  ? axios
+      .post(`${BASE_URL}/user_recordings/getRecordingData`, {
+        recordingname: data,
+      })
+
+      .then((response) => {
+        this.setState({
+          recordingData: response.data,
+        });
+        {
+          document.getElementById("recordingurl").value =
+            this.state.recordingData.recordingurl;
+        }
+        {
+          document.getElementById("memo").value =
+            this.state.recordingData.memo;
+        }
+      })
+  : alert("Please make a selection");
+}
+
   handleRecordingChange = async (e) => {
     await this.setState({
       value: e.target.value,
     });
+    this.handleGetInfo(e.target.value);
   };
 
   submitRecording = async (e) => {
     e.preventDefault();
 
     const data = this.state.value;
-    if (e.nativeEvent.submitter.defaultValue === "Get Info") {
-      this.state.value
-        ? axios
-            .post(`${BASE_URL}/user_recordings/getRecordingData`, {
-              recordingname: data,
-            })
 
-            .then((response) => {
-              this.setState({
-                recordingData: response.data,
-              });
-              {
-                document.getElementById("recordingurl").value =
-                  this.state.recordingData.recordingurl;
-              }
-              {
-                document.getElementById("memo").value =
-                  this.state.recordingData.memo;
-              }
-            })
-        : alert("Please make a selection");
-    } else if (e.nativeEvent.submitter.defaultValue === "Update") {
+    if (e.nativeEvent.submitter.defaultValue === "Update") {
         alert("UPDATE button pushed");
-    } else if ((e.nativeEvent.submitter.defaultValue === "New") && !(this.state.validatedUser === '')) {
+    } else if ((e.nativeEvent.submitter.defaultValue === "New") && (this.state.validatedUser !== '')) {
     // NEW selection.  Change MP3 Name field to text input, clear all form fields
         document.getElementById("optSelectMP3").outerHTML = '<input id="optSelectMP3" type="text"/>';
         document.getElementById("recordingurl").value = '';
         document.getElementById("memo").value = '';          
         
-    } else if ((e.nativeEvent.submitter.defaultValue === "Save") && !(this.state.validatedUser === '')) {
+    } else if ((e.nativeEvent.submitter.defaultValue === "Save") && (this.state.validatedUser !== '')) {
     // SAVE selection.
-    //  alert("Save in progress.");
     console.log('User ID: ', this.state.userId);
         const data = {
           userId: this.state.userId,
@@ -94,23 +99,27 @@ class UserRecordings extends Component {
           memo: document.getElementById("memo").value
         }
     console.log('SAVE data - ', data);
-        data.recordingname == '' ?
+        data.recordingname === '' ?
         alert('Record not save. Name field is empty.') :
         axios.post(`${BASE_URL}/user_recordings/addRecording/`, data);
        // Change MP3 Name field back to dropdown
         document.getElementById("optSelectMP3").outerHTML = '<select id="optSelectMP3" className="optSelectRecording" value={this.state.value} onChange={this.handleRecordingChange} />';
         document.getElementById("optSelectMP3").innerHTML = '<option selected value=""> Select Recording Name </option>';
-        // ${this.state.recordinglist.map((recording, index) => { return (<option key={recording.id} value={recording.recordingname}> {recording.recordingname} </option>);})}`;
         document.getElementById("recordingurl").value = '';
         document.getElementById("memo").value = '';
 
-    } else if ((e.nativeEvent.submitter.defaultValue === "Delete") && !(this.state.validatedUser === '')) {
+    } else if ((e.nativeEvent.submitter.defaultValue === "Delete") && (this.state.validatedUser !== '')) {
+      // =====================
+      // call Get Info
+      this.handleGetInfo(e.target.value);
+      // ====================
+      console.log('after call to handleGetInfo: ', this.state.recordingData)
 
       if (
         window.confirm('Are you sure you want to DELETE this record?') === true
       ) {
-      
-        axios.post(`${BASE_URL}/user_recordings/deleteRecording/${this.state.recordingData.id}`);
+
+        axios.post(`${BASE_URL}/user_recordings/deleteRecording/${this.state.recordingData.id}`)
   
          document.getElementById("optSelectMP3").outerHTML = '<input id="optSelectMP3" type="text"/>';
          document.getElementById("recordingurl").value = '';
@@ -120,7 +129,6 @@ class UserRecordings extends Component {
       } else {
         alert("Delete cancelled");
       }
-    // { alert("No record selected (Get Info)") };
 
     } else {
       alert("You must log in to use this function.");
@@ -160,7 +168,7 @@ class UserRecordings extends Component {
             </label>
             <textarea id="memo" name="txtMemo" rows="4" columns="60"></textarea>
           </p>
-          <input className="btnMP3" type="submit" value="Get Info" />
+          {/* <input className="btnMP3" type="submit" value="Get Info" /> */}
           <input className="btnMP3" type="submit" value="Update" />
           <input className="btnMP3" type="submit" value="New" />
           <input className="btnMP3" type="submit" value="Save" />
